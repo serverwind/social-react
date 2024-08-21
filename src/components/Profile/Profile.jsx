@@ -11,7 +11,7 @@ function Profile() {
 function Brand() {
   return (
     <div className="h-48 bg-black flex justify-center items-center">
-      <h1 className="text-2xl text-white">User Name</h1>
+      <h1 className="text-2xl text-white uppercase border-b-2 border-t-2 border-white">Alex Lestra</h1>
     </div>
   );
 }
@@ -27,14 +27,14 @@ function Bio() {
 
 function Photo() {
   return (
-    <div className="h-24 w-24 bg-gray-800 rounded-full flex justify-center items-center text-white font-bold">UN</div>
+    <div className="h-24 w-24 bg-gray-800 rounded-full flex justify-center items-center text-white font-bold">AL</div>
   )
 }
 
 function UserInfo() {
   return (
       <ul>
-        <li>:: User Name</li>
+        <li>:: Alex Lestra</li>
         <li>:: 16 November</li>
         <li>:: Frontend Developer</li>
         <li>:: serverwind.github.io</li>
