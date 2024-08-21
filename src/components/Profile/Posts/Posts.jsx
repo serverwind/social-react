@@ -10,6 +10,7 @@ function Posts() {
       </div>
 
       <div>
+        <Post message={"Deployed project to Netlify."} />
         <Post message={"Finished course lessons 11-16."} />
         <Post message={"Hi! This is a first post."} />
       </div>
