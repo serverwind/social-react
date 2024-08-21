@@ -1,3 +1,5 @@
+import { Post } from "./Post/Post";
+
 function Posts() {
   return (
     <div className="p-4">
@@ -8,7 +10,7 @@ function Posts() {
       </div>
 
       <div>
-        <p>No posts yet.</p>
+        <Post />
       </div>
     </div>
   )
