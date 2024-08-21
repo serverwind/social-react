@@ -7,7 +7,7 @@ function App() {
   return (
     <section>
       <Header />
-      <div className="grid grid-cols-[1fr_2fr]">
+      <div className="grid grid-cols-[200px_1fr]">
         <Navigation />
         <Profile />
       </div>
