@@ -10,7 +10,8 @@ function Posts() {
       </div>
 
       <div>
-        <Post />
+        <Post message={"Finished course lessons 11-16."} />
+        <Post message={"Hi! This is a first post."} />
       </div>
     </div>
   )
