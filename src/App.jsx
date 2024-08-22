@@ -15,13 +15,13 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <section>
-      <Header />
-      <div className="grid grid-cols-[200px_1fr]">
-        <Navigation />
+    <BrowserRouter>
+      <section>
+        <Header />
+        <div className="grid grid-cols-[200px_1fr]">
+          <Navigation />
 
-        {/* ROUTING */}
-        <BrowserRouter>
+          {/* ROUTING */}
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route path="/profile" element={<Profile />} />
@@ -30,11 +30,12 @@ function App() {
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
-        </BrowserRouter>
-        {/* ROUTING: END */}
-      </div>
-      <Footer />
-    </section>
+          {/* ROUTING: END */}
+
+        </div>
+        <Footer />
+      </section>
+    </BrowserRouter>
   );
 }
 
