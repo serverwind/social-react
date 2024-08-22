@@ -2,4 +2,4 @@
 
 Project for learning React.
 
-Netlify: https://master--sw-network.netlify.app/
+Netlify: https://sw-network.netlify.app/
