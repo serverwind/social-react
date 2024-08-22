@@ -1,24 +1,14 @@
 import s from "../Navigation.module.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "./Link/Link";
 
 function Links() {
   return (
     <ul className="flex flex-col gap-2">
-      <li className="hover:underline transition duration-300">
-        <NavLink className={links => links.isActive ? s.active : ""} to="/profile">@Profile</NavLink>
-      </li>
-      <li className="hover:underline transition duration-300">
-        <NavLink className={links => links.isActive ? s.active : ""} to="/messenger">@Messages</NavLink>
-      </li>
-      <li className="hover:underline transition duration-300">
-        <NavLink className={links => links.isActive ? s.active : ""} to="/feed">@Feed</NavLink>
-      </li>
-      <li className="hover:underline transition duration-300">
-        <NavLink className={links => links.isActive ? s.active : ""} to="/music">@Music</NavLink>
-      </li>
-      <li className="hover:underline transition duration-300">
-        <NavLink className={links => links.isActive ? s.active : ""} to="/settings">@Settings</NavLink>
-      </li>
+      <Link active={ links => links.isActive ? s.active : "" } link="/profile" name="@Profile" />
+      <Link active={ links => links.isActive ? s.active : "" } link="/messenger" name="@Messenger" />
+      <Link active={ links => links.isActive ? s.active : "" } link="/feed" name="@Feed" />
+      <Link active={ links => links.isActive ? s.active : "" } link="/music" name="@Music" />
+      <Link active={ links => links.isActive ? s.active : "" } link="/settings" name="@Settings" />
     </ul>
   );
 }
