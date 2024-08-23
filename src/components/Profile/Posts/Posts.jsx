@@ -7,7 +7,8 @@ function Posts({ posts, addPost }) {
 
   function newPost() {
     let text = newPostText.current.value;
-    addPost(6, text);
+    let id = posts.length + 1;
+    addPost(id, text);
   }
 
   return (
