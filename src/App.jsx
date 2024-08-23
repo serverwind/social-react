@@ -12,6 +12,10 @@ import { Settings } from "./components/Settings/Settings";
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+// TEMP
+
+import { addPost } from "./main"
+
 //
 
 function App({ links, users, messages, posts }) {
@@ -24,8 +28,8 @@ function App({ links, users, messages, posts }) {
 
           {/* ROUTING */}
           <Routes>
-            <Route path="/" element={<Profile posts={posts} />} />
-            <Route path="/profile" element={<Profile posts={posts} />} />
+            <Route path="/" element={<Profile posts={posts} addPost={addPost} />} />
+            <Route path="/profile" element={<Profile posts={posts} addPost={addPost} />} />
             <Route path="/messenger/*" element={<Messenger messages={messages} users={users} />} />
             <Route path="/friends" element={<Friends users={users} />} />
             <Route path="/feed" element={<Feed />} />

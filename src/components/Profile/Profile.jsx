@@ -2,12 +2,12 @@ import { Brand } from "./Brand/Brand";
 import { Bio } from "./Bio/Bio";
 import { Posts } from "./Posts/Posts";
 
-function Profile({ posts }) {
+function Profile({ posts, addPost }) {
   return (
     <main>
       <Brand />
       <Bio />
-      <Posts posts={posts} />
+      <Posts posts={posts} addPost={addPost} />
     </main>
   );
 }
