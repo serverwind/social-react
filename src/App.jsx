@@ -4,6 +4,7 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
 import { Profile } from "./components/Profile/Profile";
 import { Messenger } from "./components/Messenger/Messenger";
+import { Friends } from "./components/Friends/Friends";
 import { Feed } from "./components/Feed/Feed";
 import { Music } from "./components/Music/Music";
 import { Settings } from "./components/Settings/Settings";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Profile />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/messenger/*" element={<Messenger />} />
+            <Route path="/friends" element={<Friends />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
