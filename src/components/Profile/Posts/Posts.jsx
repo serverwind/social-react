@@ -1,8 +1,6 @@
 import { Post } from "./Post/Post";
-import data from "../../../data/posts.json"
 
-function Posts() {
-
+function Posts({ posts }) {
   return (
     <div className="p-4">
       <h2 className="text-xl mb-4">My posts</h2>
@@ -12,8 +10,8 @@ function Posts() {
       </div>
 
       <div>
-        {data.map((post, index) => (
-          <Post key={index} message={post.message} />
+        {posts.map((post, index) => (
+          <Post key={index} post={post.message} />
         ))}
       </div>
     </div>

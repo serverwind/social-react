@@ -1,5 +1,5 @@
-function Post({ message }) {
-  return <div className="italic mb-4">{ message }</div>;
+function Post({ id, post }) {
+  return <div key={id} className="italic mb-4">{ post }</div>;
 }
 
 export { Post };

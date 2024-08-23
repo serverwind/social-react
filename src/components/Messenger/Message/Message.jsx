@@ -1,5 +1,5 @@
-function Message({ message }) {
-  return <div>{message}</div>;
+function Message({ id, message }) {
+  return <div key={id}>{message}</div>;
 }
 
 export { Message };
