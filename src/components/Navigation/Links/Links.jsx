@@ -1,15 +1,8 @@
 import s from "../Navigation.module.css";
 import { Link } from "./Link/Link";
+import data from "../../../data/links.json";
 
 function Links() {
-  const data = [
-    { link: "/profile", name: "- Profile" },
-    { link: "/messenger", name: "- Messenger" },
-    { link: "/feed", name: "- Feed" },
-    { link: "/music", name: "- Music" },
-    { link: "/settings", name: "- Settings" },
-  ];
-
   return (
     <ul className="flex flex-col gap-2">
       {data.map((link, index) => (

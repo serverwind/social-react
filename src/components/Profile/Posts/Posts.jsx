@@ -1,7 +1,7 @@
 import { Post } from "./Post/Post";
+import data from "../../../data/posts.json"
 
 function Posts() {
-  const data = [{ message: "Finished course lessons 17-25." }, { message: "Deployed project to Netlify." }, { message: "Finished course lessons 11-16." }, { message: "Hi! This is a first post." }];
 
   return (
     <div className="p-4">

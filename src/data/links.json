@@ -1,0 +1,7 @@
+[
+  { "link": "/profile", "name": "- Profile" },
+  { "link": "/messenger", "name": "- Messenger" },
+  { "link": "/feed", "name": "- Feed" },
+  { "link": "/music", "name": "- Music" },
+  { "link": "/settings", "name": "- Settings" }
+]
