@@ -4,15 +4,18 @@ import { Post } from "./Post/Post";
 function Posts({ posts, addPost, changeInput }) {
   let newPostText = React.createRef();
 
-  function newPost() {
-    let text = newPostText.current.value;
-    let id = posts.posts.length + 1;
-    addPost(id, text);
-  }
-
+  /* send data user input
+   * so when state updates
+   * component will re-render (FLUX architecture)
+   */
   function stateText() {
     let text = newPostText.current.value;
     changeInput(text);
+  }
+
+  function newPost() {
+    let id = posts.posts.length + 1;
+    addPost(id, posts.input.text);
   }
 
   return (
