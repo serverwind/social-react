@@ -14,6 +14,7 @@ import posts from "./data/posts.json";
 
 export function addPost(id, post) {
   posts.posts.push({ id: id, post: post });
+  posts.input.text = "";
   render();
 }
 
