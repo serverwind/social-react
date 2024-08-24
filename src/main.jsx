@@ -10,17 +10,24 @@ import users from "./data/users.json";
 import messages from "./data/messages.json";
 import posts from "./data/posts.json";
 
-/* */
+/* FUNCTIONS to update data (state) and call re-render */
 
 export function addPost(id, post) {
-  posts.push({ id: id, post: post });
+  posts.posts.push({ id: id, post: post });
+  render();
+}
+
+export function changeInput(text) {
+  posts.input.text = text;
   render();
 }
 
 /* function render() is to rerender dom tree when data changes */
 
+const root = createRoot(document.getElementById("root"));
+
 function render() {
-  createRoot(document.getElementById("root")).render(
+  root.render(
     <StrictMode>
       <App links={links} users={users} messages={messages} posts={posts} />
     </StrictMode>
