@@ -14,8 +14,10 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 // TEMP
 
-import { addPost } from "./main"
-import { changeInput } from "./main"
+import { addPost } from "./main";
+import { addMessage } from "./main";
+import { changeInput } from "./main";
+import { changeMessengerInput } from "./main";
 
 //
 
@@ -31,7 +33,7 @@ function App({ links, users, messages, posts }) {
           <Routes>
             <Route path="/" element={<Profile posts={posts} addPost={addPost} changeInput={changeInput} />} />
             <Route path="/profile" element={<Profile posts={posts} addPost={addPost} changeInput={changeInput} />} />
-            <Route path="/messenger/*" element={<Messenger messages={messages} users={users} />} />
+            <Route path="/messenger/*" element={<Messenger messages={messages} users={users} changeMessengerInput={changeMessengerInput} addMessage={addMessage} />} />
             <Route path="/friends" element={<Friends users={users} />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/music" element={<Music />} />
