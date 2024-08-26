@@ -4,7 +4,7 @@ import { Posts } from "./Posts/Posts";
 
 function Profile({ posts, addPost, changeInput }) {
   return (
-    <main className="overflow-y-scroll h-screen">
+    <main className="overflow-y-scroll">
       <Brand />
       <Bio />
       <Posts posts={posts} addPost={addPost} changeInput={changeInput} />

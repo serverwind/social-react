@@ -593,6 +593,14 @@ video {
   height: 100vh;
 }
 
+.h-auto {
+  height: auto;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
