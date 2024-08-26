@@ -1,6 +1,7 @@
 import React from "react";
 import { User } from "./User/User";
 import { Message } from "./Message/Message";
+import s from "./Messenger.module.css";
 
 function Messenger({ messages, users, changeMessengerInput, addMessage }) {
   let newMessageText = React.createRef();
@@ -20,7 +21,7 @@ function Messenger({ messages, users, changeMessengerInput, addMessage }) {
       <div className="bg-gray-200 p-4">
         <ul className="flex sm:flex-col justify-center gap-2">
           {users.users.map((user) => (
-            <User key={user.id} name={user.name} chat={`/messenger/${user.id}`} />
+            <User key={user.id} name={user.name} chat={`/messenger/${user.id}`} active={(name) => (name.isActive ? s.active : "")}/>
           ))}
         </ul>
       </div>
