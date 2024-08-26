@@ -24,8 +24,7 @@ export function changeInput(text) {
   render();
 }
 
-// 2. MESSENGER
-
+// 2. MESSENGER - MESSAGES
 export function changeMessengerInput(text) {
   messages.input.text = text;
   render();

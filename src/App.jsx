@@ -26,7 +26,7 @@ function App({ links, users, messages, posts }) {
     <BrowserRouter>
       <section>
         <Header />
-        <div className="grid sm:grid-cols-[200px_1fr] h-screen">
+        <div className="grid sm:grid-cols-[200px_1fr]">
           <Navigation links={links} />
 
           {/* ROUTING */}
