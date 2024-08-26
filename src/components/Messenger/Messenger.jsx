@@ -16,9 +16,9 @@ function Messenger({ messages, users, changeMessengerInput, addMessage }) {
   }
 
   return (
-    <section className="grid grid-cols-[200px_1fr]">
+    <section className="grid sm:grid-cols-[200px_1fr]">
       <div className="bg-gray-200 p-4">
-        <ul className="flex flex-col gap-2">
+        <ul className="flex sm:flex-col justify-center gap-2">
           {users.users.map((user) => (
             <User key={user.id} name={user.name} chat={`/messenger/${user.id}`} />
           ))}
