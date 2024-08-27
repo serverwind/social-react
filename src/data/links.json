@@ -1,8 +1,0 @@
-[
-  { "link": "/profile", "name": "- Profile" },
-  { "link": "/messenger", "name": "- Messenger" },
-  { "link": "/friends", "name": "- Friends" },
-  { "link": "/feed", "name": "- Feed" },
-  { "link": "/music", "name": "- Music" },
-  { "link": "/settings", "name": "- Settings" }
-]

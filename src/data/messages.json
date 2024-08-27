@@ -1,7 +1,0 @@
-{
-  "messages": [
-    { "message": "Hello, how are you?", "id": "1" },
-    { "message": "Thanks!", "id": "2" }
-  ],
-  "input": { "text": "" }
-}
