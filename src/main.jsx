@@ -5,36 +5,11 @@ import "./output.css";
 
 /* DATA */
 
-import links from "./data/links.json";
-import users from "./data/users.json";
-import messages from "./data/messages.json";
-import posts from "./data/posts.json";
+import { state } from "./data/store";
 
-/* FUNCTIONS to update data (state) and call re-render */
+/* FUNCTIONS to update data (state) and callback to rerender tree */
 
-// 1. PROFILE - POSTS
-export function addPost(id, post) {
-  posts.posts.push({ id: id, post: post });
-  posts.input.text = ""; // to clear input field when post added
-  render();
-}
-
-export function changeInput(text) {
-  posts.input.text = text;
-  render();
-}
-
-// 2. MESSENGER - MESSAGES
-export function changeMessengerInput(text) {
-  messages.input.text = text;
-  render();
-}
-
-export function addMessage(id, message) {
-  messages.messages.push({ id: id, message: message });
-  messages.input.text = ""; // to clear input field when post added
-  render();
-}
+import { changeInput, addPost, changeMessengerInput, addMessage, subscriber } from "./data/store";
 
 /* function render() is to rerender dom tree when data changes */
 
@@ -43,8 +18,10 @@ const root = createRoot(document.getElementById("root"));
 function render() {
   root.render(
     <StrictMode>
-      <App links={links} users={users} messages={messages} posts={posts} />
+      <App state={state} changeInput={changeInput} addPost={addPost} changeMessengerInput={changeMessengerInput} addMessage={addMessage} />
     </StrictMode>
   );
 }
 render();
+
+subscriber(render);
