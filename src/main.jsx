@@ -7,10 +7,6 @@ import "./output.css";
 
 import { state } from "./data/store";
 
-/* FUNCTIONS to update data (state) and callback to rerender tree */
-
-import { changeInput, addPost, changeMessengerInput, addMessage, subscriber } from "./data/store";
-
 /* function render() is to rerender dom tree when data changes */
 
 const root = createRoot(document.getElementById("root"));
@@ -18,10 +14,10 @@ const root = createRoot(document.getElementById("root"));
 function render() {
   root.render(
     <StrictMode>
-      <App state={state} changeInput={changeInput} addPost={addPost} changeMessengerInput={changeMessengerInput} addMessage={addMessage} />
+      <App state={state.getData()} changeInput={state.changeInput.bind(state)} addPost={state.addPost.bind(state)} changeMessengerInput={state.changeMessengerInput.bind(state)} addMessage={state.addMessage.bind(state)} />
     </StrictMode>
   );
 }
 render();
 
-subscriber(render);
+state.subscriber(render);
