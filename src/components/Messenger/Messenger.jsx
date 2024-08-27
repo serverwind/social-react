@@ -3,17 +3,17 @@ import { User } from "./User/User";
 import { Message } from "./Message/Message";
 import s from "./Messenger.module.css";
 
-function Messenger({ messenger, users, changeMessengerInput, addMessage }) {
+function Messenger({ messenger, users, dispatch }) {
   let newMessageText = React.createRef();
 
   function stateText() {
     let text = newMessageText.current.value;
-    changeMessengerInput(text);
+    dispatch({ type: "CHANGE-MESSENGER-INPUT", text });
   }
 
   function sendMessage() {
     let id = messenger.messages.length + 1;
-    addMessage(id, messenger.input.text);
+    dispatch({ type: "SEND-MESSAGE", id, message: messenger.input.text });
   }
 
   return (
@@ -21,7 +21,7 @@ function Messenger({ messenger, users, changeMessengerInput, addMessage }) {
       <div className="bg-gray-200 p-4">
         <ul className="flex flex-wrap sm:flex-col justify-center gap-2">
           {users.map((user) => (
-            <User key={user.id} name={user.name} chat={`/messenger/${user.id}`} active={(name) => (name.isActive ? s.active : "")}/>
+            <User key={user.id} name={user.name} chat={`/messenger/${user.id}`} active={(name) => (name.isActive ? s.active : "")} />
           ))}
         </ul>
       </div>

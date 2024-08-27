@@ -14,7 +14,7 @@ const root = createRoot(document.getElementById("root"));
 function render() {
   root.render(
     <StrictMode>
-      <App state={state.getData()} changeInput={state.changeInput.bind(state)} addPost={state.addPost.bind(state)} changeMessengerInput={state.changeMessengerInput.bind(state)} addMessage={state.addMessage.bind(state)} />
+      <App state={state.getData()} dispatch={state.dispatch.bind(state)} />
     </StrictMode>
   );
 }

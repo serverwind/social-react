@@ -47,27 +47,51 @@ let state = {
   render() {
     console.log("render tree");
   },
-  addPost(id, post) {
-    this._data.posts.posts.push({ id: id, post: post });
-    this._data.posts.input.text = "";
-    this.render();
-  },
-  changeInput(text) {
-    this._data.posts.input.text = text;
-    this.render();
-  },
-  changeMessengerInput(text) {
-    this._data.messenger.input.text = text;
-    this.render();
-  },
-  addMessage(id, message) {
-    this._data.messenger.messages.push({ id: id, message: message });
-    this._data.messenger.input.text = "";
-    this.render();
-  },
   subscriber(observer) {
     this.render = observer;
   },
+
+  dispatch(action) {
+    switch (action.type) {
+      case "ADD-POST":
+        this._data.posts.posts.push({ id: action.id, post: action.post });
+        this._data.posts.input.text = "";
+        this.render();
+        break;
+      case "CHANGE-TEXT":
+        this._data.posts.input.text = action.text;
+        this.render();
+        break;
+      case "CHANGE-MESSENGER-INPUT":
+        this._data.messenger.input.text = action.text;
+        this.render();
+        break;
+      case "SEND-MESSAGE":
+        this._data.messenger.messages.push({ id: action.id, message: action.message });
+        this._data.messenger.input.text = "";
+        this.render();
+        break;
+    }
+  },
+
+  // addPost(id, post) {
+  //   this._data.posts.posts.push({ id: id, post: post });
+  //   this._data.posts.input.text = "";
+  //   this.render();
+  // },
+  // changeInput(text) {
+  //   this._data.posts.input.text = text;
+  //   this.render();
+  // },
+  // changeMessengerInput(text) {
+  //   this._data.messenger.input.text = text;
+  //   this.render();
+  // },
+  // addMessage(id, message) {
+  //   this._data.messenger.messages.push({ id: id, message: message });
+  //   this._data.messenger.input.text = "";
+  //   this.render();
+  // },
 };
 
 export { state };

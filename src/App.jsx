@@ -14,7 +14,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 //
 
-function App({ state, changeInput, addPost, changeMessengerInput, addMessage }) {
+function App({ state, dispatch }) {
   return (
     <BrowserRouter>
       <section>
@@ -24,9 +24,9 @@ function App({ state, changeInput, addPost, changeMessengerInput, addMessage }) 
 
           {/* ROUTING */}
           <Routes>
-            <Route path="/" element={<Profile posts={state.posts} addPost={addPost} changeInput={changeInput} />} />
-            <Route path="/profile" element={<Profile posts={state.posts} addPost={addPost} changeInput={changeInput} />} />
-            <Route path="/messenger/*" element={<Messenger messenger={state.messenger} users={state.users.users} changeMessengerInput={changeMessengerInput} addMessage={addMessage} />} />
+            <Route path="/" element={<Profile posts={state.posts} dispatch={dispatch} />} />
+            <Route path="/profile" element={<Profile posts={state.posts} dispatch={dispatch} />} />
+            <Route path="/messenger/*" element={<Messenger messenger={state.messenger} users={state.users.users} dispatch={dispatch} />} />
             <Route path="/friends" element={<Friends friends={state.users.friends} />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/music" element={<Music />} />

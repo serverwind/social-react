@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "./Post/Post";
 
-function Posts({ posts, addPost, changeInput }) {
+function Posts({ posts, dispatch }) {
   let newPostText = React.createRef();
 
   /* send data user input
@@ -10,12 +10,12 @@ function Posts({ posts, addPost, changeInput }) {
    */
   function stateText() {
     let text = newPostText.current.value;
-    changeInput(text);
+    dispatch({ type: "CHANGE-TEXT", text });
   }
 
   function newPost() {
     let id = posts.posts.length + 1;
-    addPost(id, posts.input.text);
+    dispatch({ type: "ADD-POST", id, post: posts.input.text });
   }
 
   return (
