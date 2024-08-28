@@ -1,5 +1,6 @@
 import React from "react";
 import { Post } from "./Post/Post";
+import { newPostActionCreater, stateTextActionCreator } from "../../../data/store";
 
 function Posts({ posts, dispatch }) {
   let newPostText = React.createRef();
@@ -10,12 +11,14 @@ function Posts({ posts, dispatch }) {
    */
   function stateText() {
     let text = newPostText.current.value;
-    dispatch({ type: "CHANGE-TEXT", text });
+    let action = stateTextActionCreator(text)
+    dispatch(action);
   }
 
   function newPost() {
     let id = posts.posts.length + 1;
-    dispatch({ type: "ADD-POST", id, post: posts.input.text });
+    let action = newPostActionCreater(id, posts.input.text);
+    dispatch(action);
   }
 
   return (

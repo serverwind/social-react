@@ -73,25 +73,22 @@ let state = {
         break;
     }
   },
-
-  // addPost(id, post) {
-  //   this._data.posts.posts.push({ id: id, post: post });
-  //   this._data.posts.input.text = "";
-  //   this.render();
-  // },
-  // changeInput(text) {
-  //   this._data.posts.input.text = text;
-  //   this.render();
-  // },
-  // changeMessengerInput(text) {
-  //   this._data.messenger.input.text = text;
-  //   this.render();
-  // },
-  // addMessage(id, message) {
-  //   this._data.messenger.messages.push({ id: id, message: message });
-  //   this._data.messenger.input.text = "";
-  //   this.render();
-  // },
 };
 
-export { state };
+function newPostActionCreater(id, post) {
+  return { type: "ADD-POST", id, post };
+}
+
+function stateTextActionCreator(text) {
+  return { type: "CHANGE-TEXT", text };
+}
+
+function sendMessageActionCreator(id, message) {
+  return { type: "SEND-MESSAGE", id, message: message };
+}
+
+function messengerInputActionCreator(text) {
+  return { type: "CHANGE-MESSENGER-INPUT", text };
+}
+
+export { state, newPostActionCreater, stateTextActionCreator, messengerInputActionCreator, sendMessageActionCreator };

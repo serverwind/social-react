@@ -2,18 +2,21 @@ import React from "react";
 import { User } from "./User/User";
 import { Message } from "./Message/Message";
 import s from "./Messenger.module.css";
+import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/store";
 
 function Messenger({ messenger, users, dispatch }) {
   let newMessageText = React.createRef();
 
   function stateText() {
     let text = newMessageText.current.value;
-    dispatch({ type: "CHANGE-MESSENGER-INPUT", text });
+    let action = messengerInputActionCreator(text);
+    dispatch(action);
   }
 
   function sendMessage() {
     let id = messenger.messages.length + 1;
-    dispatch({ type: "SEND-MESSAGE", id, message: messenger.input.text });
+    let action = sendMessageActionCreator(id, messenger.input.text);
+    dispatch(action);
   }
 
   return (
