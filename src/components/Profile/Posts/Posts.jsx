@@ -11,7 +11,7 @@ function Posts({ posts, dispatch }) {
    */
   function stateText() {
     let text = newPostText.current.value;
-    let action = stateTextActionCreator(text)
+    let action = stateTextActionCreator(text);
     dispatch(action);
   }
 
@@ -32,8 +32,8 @@ function Posts({ posts, dispatch }) {
       </div>
 
       <div>
-        {posts.posts.map((post, index) => (
-          <Post key={index} post={post.post} />
+        {posts.posts.map((post) => (
+          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} dispatch={dispatch} />
         ))}
       </div>
     </div>

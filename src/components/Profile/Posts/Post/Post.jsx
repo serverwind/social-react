@@ -1,5 +1,21 @@
-function Post({ id, post }) {
-  return <div key={id} className="italic mb-4">{ post }</div>;
+import { likeActionCreator } from "../../../../data/store";
+
+function Post({ id, post, likes, dispatch }) {
+  function like() {
+    likes++;
+    let action = likeActionCreator(id, likes);
+    dispatch(action);
+  }
+
+  return (
+    <div className="mb-4">
+      <div className="italic mb-2">{post}</div>
+      <div>
+        <button onClick={like}>❤</button>
+        <span>{likes}</span>
+      </div>
+    </div>
+  );
 }
 
 export { Post };

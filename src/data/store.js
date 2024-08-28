@@ -10,11 +10,11 @@ let state = {
     ],
     posts: {
       posts: [
-        { id: "1", post: "Finished course and all practice of lessons 25-30." },
-        { id: "2", post: "Finished course and all practice of lessons 17-25." },
-        { id: "3", post: "Deployed project to Netlify." },
-        { id: "4", post: "Finished course and all practice of lessons 11-16." },
-        { id: "5", post: "Hi! This is a first post." },
+        { id: "1", post: "Finished course and all practice of lessons 25-30.", likes: "5" },
+        { id: "2", post: "Finished course and all practice of lessons 17-25.", likes: "10" },
+        { id: "3", post: "Deployed project to Netlify.", likes: "7" },
+        { id: "4", post: "Finished course and all practice of lessons 11-16.", likes: "3" },
+        { id: "5", post: "Hi! This is a first post.", likes: "2" },
       ],
       input: { text: "" },
     },
@@ -62,6 +62,14 @@ let state = {
         this._data.posts.input.text = action.text;
         this.render();
         break;
+      case "LIKE":
+        this._data.posts.posts.filter((post) => {
+          if (post.id === action.id) {
+            post.likes = action.likes;
+          }
+        });
+        this.render();
+        break;
       case "CHANGE-MESSENGER-INPUT":
         this._data.messenger.input.text = action.text;
         this.render();
@@ -91,4 +99,8 @@ function messengerInputActionCreator(text) {
   return { type: "CHANGE-MESSENGER-INPUT", text };
 }
 
-export { state, newPostActionCreater, stateTextActionCreator, messengerInputActionCreator, sendMessageActionCreator };
+function likeActionCreator(id, likes) {
+  return { type: "LIKE", id, likes };
+}
+
+export { state, newPostActionCreater, stateTextActionCreator, messengerInputActionCreator, sendMessageActionCreator, likeActionCreator };
