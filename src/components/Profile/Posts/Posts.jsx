@@ -17,7 +17,7 @@ function Posts({ posts, dispatch }) {
 
   function newPost() {
     let id = posts.posts.length + 1;
-    let action = newPostActionCreater(id, posts.input.text);
+    let action = newPostActionCreater(id, posts.input.text, 0);
     dispatch(action);
   }
 

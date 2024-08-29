@@ -1,7 +1,7 @@
 function postReducer(state, action) {
   switch (action.type) {
     case "ADD-POST":
-      state.posts.push({ id: action.id, post: action.post });
+      state.posts.push({ id: action.id, post: action.post, likes: 0 });
       state.input.text = "";
       break;
     case "CHANGE-TEXT":
@@ -11,8 +11,8 @@ function postReducer(state, action) {
   return state;
 }
 
-function newPostActionCreater(id, post) {
-  return { type: "ADD-POST", id, post };
+function newPostActionCreater(id, post, likes) {
+  return { type: "ADD-POST", id, post, likes };
 }
 
 function stateTextActionCreator(text) {
