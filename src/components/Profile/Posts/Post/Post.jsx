@@ -1,4 +1,4 @@
-import { likeActionCreator } from "../../../../data/store";
+import { likeActionCreator } from "../../../../data/likeReducer";
 
 function Post({ id, post, likes, dispatch }) {
   function like() {

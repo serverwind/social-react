@@ -2,7 +2,7 @@ import React from "react";
 import { User } from "./User/User";
 import { Message } from "./Message/Message";
 import s from "./Messenger.module.css";
-import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/store";
+import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/messengerReducer";
 
 function Messenger({ messenger, users, dispatch }) {
   let newMessageText = React.createRef();

@@ -1,3 +1,7 @@
+import { postReducer } from "./postReducer";
+import { likeReducer } from "./likeReducer";
+import { messengerReducer } from "./messengerReducer";
+
 let state = {
   _data: {
     links: [
@@ -18,6 +22,13 @@ let state = {
       ],
       input: { text: "" },
     },
+    messenger: {
+      messages: [
+        { message: "Hello, how are you?", id: "1" },
+        { message: "Thanks!", id: "2" },
+      ],
+      input: { text: "" },
+    },
     users: {
       users: [
         { name: "Emily", id: "1" },
@@ -32,13 +43,6 @@ let state = {
         { name: "Sally", id: "3" },
       ],
     },
-    messenger: {
-      messages: [
-        { message: "Hello, how are you?", id: "1" },
-        { message: "Thanks!", id: "2" },
-      ],
-      input: { text: "" },
-    },
   },
 
   getData() {
@@ -52,55 +56,11 @@ let state = {
   },
 
   dispatch(action) {
-    switch (action.type) {
-      case "ADD-POST":
-        this._data.posts.posts.push({ id: action.id, post: action.post });
-        this._data.posts.input.text = "";
-        this.render();
-        break;
-      case "CHANGE-TEXT":
-        this._data.posts.input.text = action.text;
-        this.render();
-        break;
-      case "LIKE":
-        this._data.posts.posts.filter((post) => {
-          if (post.id === action.id) {
-            post.likes = action.likes;
-          }
-        });
-        this.render();
-        break;
-      case "CHANGE-MESSENGER-INPUT":
-        this._data.messenger.input.text = action.text;
-        this.render();
-        break;
-      case "SEND-MESSAGE":
-        this._data.messenger.messages.push({ id: action.id, message: action.message });
-        this._data.messenger.input.text = "";
-        this.render();
-        break;
-    }
+    this._data.posts = postReducer(this._data.posts, action);
+    this._data.posts = likeReducer(this._data.posts, action);
+    this._data.messenger = messengerReducer(this._data.messenger, action);
+    this.render();
   },
 };
 
-function newPostActionCreater(id, post) {
-  return { type: "ADD-POST", id, post };
-}
-
-function stateTextActionCreator(text) {
-  return { type: "CHANGE-TEXT", text };
-}
-
-function sendMessageActionCreator(id, message) {
-  return { type: "SEND-MESSAGE", id, message: message };
-}
-
-function messengerInputActionCreator(text) {
-  return { type: "CHANGE-MESSENGER-INPUT", text };
-}
-
-function likeActionCreator(id, likes) {
-  return { type: "LIKE", id, likes };
-}
-
-export { state, newPostActionCreater, stateTextActionCreator, messengerInputActionCreator, sendMessageActionCreator, likeActionCreator };
+export { state };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Post } from "./Post/Post";
-import { newPostActionCreater, stateTextActionCreator } from "../../../data/store";
+import { newPostActionCreater, stateTextActionCreator } from "../../../data/postReducer";
 
 function Posts({ posts, dispatch }) {
   let newPostText = React.createRef();
