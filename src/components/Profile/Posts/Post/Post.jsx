@@ -1,9 +1,9 @@
 import { likeActionCreator } from "../../../../data/likeReducer";
 
-function Post({ id, post, likes, dispatch }) {
+function Post({ id, post, likes, author, dispatch }) {
   function like() {
     likes++;
-    let action = likeActionCreator(id, likes);
+    let action = likeActionCreator(id, likes, author = "Alex Lestra");
     dispatch(action);
   }
 
@@ -13,6 +13,7 @@ function Post({ id, post, likes, dispatch }) {
       <div className="bg-gray-200 py-2 px-4">
         <button onClick={like}><span className="mgc_heart_fill"></span></button>
         <span> {likes}</span>
+        <span>Author: {author}</span>
       </div>
     </div>
   );

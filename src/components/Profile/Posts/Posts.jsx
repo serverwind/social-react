@@ -33,7 +33,7 @@ function Posts({ posts, dispatch }) {
 
       <div>
         {posts.posts.map((post) => (
-          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} dispatch={dispatch} />
+          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} dispatch={dispatch} />
         ))}
       </div>
     </div>

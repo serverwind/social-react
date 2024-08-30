@@ -14,11 +14,11 @@ let state = {
     ],
     posts: {
       posts: [
-        { id: "1", post: "Finished course and all practice of lessons 25-30.", likes: "5" },
-        { id: "2", post: "Finished course and all practice of lessons 17-25.", likes: "10" },
-        { id: "3", post: "Deployed project to Netlify.", likes: "7" },
-        { id: "4", post: "Finished course and all practice of lessons 11-16.", likes: "3" },
-        { id: "5", post: "Hi! This is a first post.", likes: "2" },
+        { id: "1", post: "Finished course and all practice of lessons 25-30.", likes: "5", author: "Alex Lestra" },
+        { id: "2", post: "Finished course and all practice of lessons 17-25.", likes: "10", author: "Alex Lestra" },
+        { id: "3", post: "Deployed project to Netlify.", likes: "7", author: "Alex Lestra" },
+        { id: "4", post: "Finished course and all practice of lessons 11-16.", likes: "3", author: "Alex Lestra" },
+        { id: "5", post: "Hi! This is a first post.", likes: "2", author: "Alex Lestra" },
       ],
       input: { text: "" },
     },

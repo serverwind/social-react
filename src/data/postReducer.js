@@ -1,7 +1,7 @@
 function postReducer(state, action) {
   switch (action.type) {
     case "ADD-POST":
-      state.posts.push({ id: action.id, post: action.post, likes: 0 });
+      state.posts.push({ id: action.id, post: action.post, likes: 0, author: "Alex Lestra" });
       state.input.text = "";
       break;
     case "CHANGE-TEXT":
