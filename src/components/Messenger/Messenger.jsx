@@ -34,8 +34,8 @@ function Messenger({ messenger, users, dispatch }) {
         ))}
         <div className="flex gap-2 my-4">
           <input ref={newMessageText} onChange={stateText} className="border border-gray-300 p-2" type="text" value={messenger.input.text} />
-          <button onClick={sendMessage} className="border bg-gray-700 py-2 px-4 text-white text-sm">
-            Send
+          <button onClick={sendMessage} className="border bg-gray-300">
+            <span className="mgc_send_fill py-2 px-4"></span>
           </button>
         </div>
       </div>
