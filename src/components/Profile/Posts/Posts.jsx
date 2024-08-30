@@ -17,7 +17,7 @@ function Posts({ posts, dispatch }) {
 
   function newPost() {
     let id = posts.posts.length + 1;
-    let action = newPostActionCreater(id, posts.input.text, 0);
+    let action = newPostActionCreater(id, posts.input.text, 0, "Alex Lestra", "Today");
     dispatch(action);
   }
 
@@ -33,7 +33,7 @@ function Posts({ posts, dispatch }) {
 
       <div>
         {posts.posts.map((post) => (
-          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} dispatch={dispatch} />
+          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} date={post.date} dispatch={dispatch} />
         ))}
       </div>
     </div>
