@@ -26,8 +26,8 @@ function Posts({ posts, dispatch }) {
       <h2 className="text-xl mb-4">My posts</h2>
       <div className="flex gap-2 mb-4">
         <input ref={newPostText} onChange={stateText} className="border border-gray-300 p-2" type="text" value={posts.input.text} />
-        <button onClick={newPost} className="border bg-gray-700 py-2 px-4 text-white text-sm">
-          Post
+        <button onClick={newPost} className="border bg-gray-300">
+          <span className="mgc_send_fill py-2 px-4"></span>
         </button>
       </div>
 
