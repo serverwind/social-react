@@ -1,4 +1,12 @@
-function messengerReducer(state, action) {
+let initialState = {
+  messages: [
+    { message: "Hello, how are you?", id: "1" },
+    { message: "Thanks!", id: "2" },
+  ],
+  input: { text: "" },
+};
+
+function messengerReducer(state = initialState, action) {
   switch (action.type) {
     case "CHANGE-MESSENGER-INPUT":
       state.input.text = action.text;

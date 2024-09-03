@@ -20,7 +20,7 @@ function App({ state, dispatch }) {
       <section>
         <Header />
         <div className="grid sm:grid-cols-[200px_1fr]">
-          <Navigation links={state.links} />
+          <Navigation links={state.links.links} />
 
           {/* ROUTING */}
           <Routes>
