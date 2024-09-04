@@ -22,6 +22,11 @@ function postReducer(state = initialState, action) {
         ...state,
         input: { ...state.input, text: action.text },
       };
+    case "LIKE":
+      return {
+        ...state,
+        posts: state.posts.map((post) => (post.id === action.id ? { ...post, likes: action.likes } : post)),
+      };
   }
   return state;
 }
@@ -34,4 +39,8 @@ function stateTextActionCreator(text) {
   return { type: "CHANGE-TEXT", text };
 }
 
-export { postReducer, newPostActionCreater, stateTextActionCreator };
+function likeActionCreator(id, likes) {
+  return { type: "LIKE", id, likes };
+}
+
+export { postReducer, newPostActionCreater, stateTextActionCreator, likeActionCreator };
