@@ -3,7 +3,7 @@ import { Header } from "./components/Header/Header";
 import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
 import { Profile } from "./components/Profile/Profile";
-import { Messenger } from "./components/Messenger/Messenger";
+import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import { Friends } from "./components/Friends/Friends";
 import { Feed } from "./components/Feed/Feed";
 import { Music } from "./components/Music/Music";
@@ -26,7 +26,7 @@ function App({ state, dispatch }) {
           <Routes>
             <Route path="/" element={<Profile posts={state.posts} dispatch={dispatch} />} />
             <Route path="/profile" element={<Profile posts={state.posts} dispatch={dispatch} />} />
-            <Route path="/messenger/*" element={<Messenger messenger={state.messenger} users={state.users.users} dispatch={dispatch} />} />
+            <Route path="/messenger/*" element={<MessengerContainer messenger={state.messenger} users={state.users.users} dispatch={dispatch} />} />
             <Route path="/friends" element={<Friends friends={state.users.friends} />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/music" element={<Music />} />
