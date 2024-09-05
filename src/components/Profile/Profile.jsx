@@ -1,13 +1,13 @@
 import { Brand } from "./Brand/Brand";
 import { Bio } from "./Bio/Bio";
-import { Posts } from "./Posts/Posts";
+import { PostsContainer } from "./Posts/PostsContainer";
 
 function Profile({ posts, dispatch }) {
   return (
     <main className="flex-shrink-0 sm:h-screen sm:overflow-y-auto">
       <Brand />
       <Bio />
-      <Posts posts={posts} dispatch={dispatch} />
+      <PostsContainer posts={posts} dispatch={dispatch} />
     </main>
   );
 }
