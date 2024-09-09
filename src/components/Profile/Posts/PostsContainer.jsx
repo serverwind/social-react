@@ -1,18 +1,28 @@
 import { Posts } from "./Posts";
 import { newPostActionCreater, stateTextActionCreator } from "../../../data/postReducer";
+import { StoreContext } from "../../../StoreContext";
 
-function PostsContainer({ posts, dispatch }) {
+function PostsContainer() {
+
+  return (
+    <StoreContext.Consumer>
+      {
+        (store) => {
+          let state = store.getState();
   function stateText(text) {
     let action = stateTextActionCreator(text);
-    dispatch(action);
+    store.dispatch(action);
   }
 
   function newPost(id, text, likes, author, date) {
     let action = newPostActionCreater(id, text, likes, author, date);
-    dispatch(action);
+    store.dispatch(action);
   }
-
-  return <Posts posts={posts} stateText={stateText} newPost={newPost} dispatch={dispatch} />;
+        return  <Posts posts={state.posts} stateText={stateText} newPost={newPost} dispatch={store.dispatch} />
+        }
+      }
+    </StoreContext.Consumer>
+  )
 }
 
 export { PostsContainer };
