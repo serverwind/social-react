@@ -4,7 +4,7 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
 import { Profile } from "./components/Profile/Profile";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
-import { Friends } from "./components/Friends/Friends";
+import { FriendsContainer } from "./components/Friends/FriendsContainer";
 import { Feed } from "./components/Feed/Feed";
 import { Music } from "./components/Music/Music";
 import { Settings } from "./components/Settings/Settings";
@@ -14,20 +14,20 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 //
 
-function App({ state, dispatch }) {
+function App() {
   return (
     <BrowserRouter>
       <section>
         <Header />
         <div className="grid sm:grid-cols-[200px_1fr]">
-          <Navigation links={state.links.links} />
+          <Navigation />
 
           {/* ROUTING */}
           <Routes>
-            <Route path="/" element={<Profile posts={state.posts} dispatch={dispatch} />} />
-            <Route path="/profile" element={<Profile posts={state.posts} dispatch={dispatch} />} />
-            <Route path="/messenger/*" element={<MessengerContainer messenger={state.messenger} users={state.users.users} dispatch={dispatch} />} />
-            <Route path="/friends" element={<Friends friends={state.users.friends} />} />
+            <Route path="/" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/messenger/*" element={<MessengerContainer />} />
+            <Route path="/friends" element={<FriendsContainer />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
