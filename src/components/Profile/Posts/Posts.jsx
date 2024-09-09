@@ -1,7 +1,7 @@
 import React from "react";
-import { Post } from "./Post/Post";
+import { PostContainer } from "./Post/PostContainer";
 
-function Posts({ posts, stateText, newPost, dispatch }) {
+function Posts({ posts, stateText, newPost }) {
   let newPostText = React.createRef();
 
   function onStateText() {
@@ -26,7 +26,7 @@ function Posts({ posts, stateText, newPost, dispatch }) {
 
       <div>
         {posts.posts.map((post) => (
-          <Post id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} date={post.date} dispatch={dispatch} />
+          <PostContainer id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} date={post.date} />
         ))}
       </div>
     </div>

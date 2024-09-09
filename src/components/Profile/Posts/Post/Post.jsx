@@ -1,10 +1,8 @@
-import { likeActionCreator } from "../../../../data/postReducer";
 
-function Post({ id, post, likes, author, date, dispatch }) {
-  function like() {
+function Post({ id, post, likes, author, date, like }) {
+  function setLike() {
     likes++;
-    let action = likeActionCreator(id, likes, (author = "Alex Lestra"));
-    dispatch(action);
+    like(id, likes);
   }
 
   return (
@@ -12,7 +10,7 @@ function Post({ id, post, likes, author, date, dispatch }) {
       <div className="italic p-4">{post}</div>
       <div className="flex gap-4 bg-gray-200 py-2 px-4 text-sm">
         <div>
-          <button onClick={like}>
+          <button onClick={setLike}>
             <span className="mgc_heart_fill"></span>
           </button>
           <span> {likes}</span>
