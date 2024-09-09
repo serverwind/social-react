@@ -1,28 +1,27 @@
 import { Messenger } from "./Messenger";
 import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/messengerReducer";
-import { StoreContext } from "../../StoreContext";
+import { connect } from "react-redux";
 
-function MessengerContainer() {
-
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState();
-  function stateText(text) {
-    let action = messengerInputActionCreator(text);
-    store.dispatch(action);
+let mapStateToProps = (state) => {
+  return {
+    messenger: state.messenger,
+    users: state.users
   }
-
-  function sendMessage(id, text) {
-    let action = sendMessageActionCreator(id, text);
-    store.dispatch(action);
-  }
-        return <Messenger stateText={stateText} sendMessage={sendMessage} messenger={state.messenger} users={state.users} />;
-        }
-      }
-    </StoreContext.Consumer>
-  )
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    stateText: (text) => {
+      let action = messengerInputActionCreator(text);
+      dispatch(action);
+    },
+    sendMessage: (id, text) => {
+      let action = sendMessageActionCreator(id, text);
+      dispatch(action);
+    }
+  }
+}
+
+const MessengerContainer = connect(mapStateToProps, mapDispatchToProps)(Messenger);
 
 export { MessengerContainer };

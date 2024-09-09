@@ -1,18 +1,12 @@
 import { Links } from "./Links";
-import { StoreContext } from "../../../StoreContext";
+import { connect } from "react-redux";
 
-function LinksContainer() {
-
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState();
-          return  <Links links={state.links} />
-        }
-      }
-    </StoreContext.Consumer>
-  )
+let mapStateToProps = (state) => {
+  return {
+    links: state.links
+  }
 }
+
+const LinksContainer = connect(mapStateToProps)(Links);
 
 export { LinksContainer };
