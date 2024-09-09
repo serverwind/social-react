@@ -17,6 +17,7 @@ function messengerReducer(state = initialState, action) {
       return {
         ...state,
         messages: [...state.messages, { id: action.id, message: action.message }],
+        input: { ...state.input, text: "" },
       };
   }
   return state;
