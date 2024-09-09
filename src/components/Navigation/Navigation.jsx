@@ -1,9 +1,9 @@
-import { Links } from "./Links/Links";
+import { LinksContainer } from "./Links/LinksContainer";
 
-function Navigation({ links }) {
+function Navigation() {
   return (
     <nav className="bg-gray-300 sm:p-4 sm:relative">
-      <Links links={links} />
+      <LinksContainer />
     </nav>
   );
 }
