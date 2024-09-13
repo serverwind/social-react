@@ -11,8 +11,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    users: state.users,
-  };
+    users: state.users
+  }
 }
 
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
