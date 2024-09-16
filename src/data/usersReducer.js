@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const initialState = {
   users: [
     // { name: "Emily", id: "1", friend: true },
@@ -9,10 +7,6 @@ const initialState = {
     // { name: "Tommy", id: "5", friend: true },
   ],
 };
-
-axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-  initialState.users = response.data.items
-})
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +19,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => (user.id === action.id ? { ...user, followed: false } : user)),
+      };
+    case "SET-USERS":
+      return {
+        ...state,
+        users: action.users,
       };
     default:
       return state;
@@ -39,4 +38,8 @@ function removeFriendAC(id) {
   return { type: "REMOVE-FRIEND", id: id };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC };
+function setUsersAC(users) {
+  return { type: "SET-USERS", users: users };
+}
+
+export { usersReducer, addFriendAC, removeFriendAC, setUsersAC };
