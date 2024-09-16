@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
   return {
-    links: state.links
-  }
-}
+    links: state.links,
+  };
+};
 
 const LinksContainer = connect(mapStateToProps)(Links);
 
