@@ -18,8 +18,8 @@ let mapDispatchToProps = (dispatch) => {
       let action = newPostActionCreater(id, text, likes, author, date);
       dispatch(action);
     },
-  }
-}
+  };
+};
 
 const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
 
