@@ -1,6 +1,6 @@
 import { Friends } from "./Friends";
 import { connect } from "react-redux";
-import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC } from "../../data/usersReducer";
+import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC } from "../../data/usersReducer";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -8,6 +8,7 @@ function mapDispatchToProps(dispatch) {
     removeFriend: (id) => dispatch(removeFriendAC(id)),
     setUsers: (users) => dispatch(setUsersAC(users)),
     setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
+    setTotalPages: (totalPages) => dispatch(setTotalPagesAC(totalPages)),
   };
 }
 

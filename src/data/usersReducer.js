@@ -33,6 +33,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         currentPage: action.currentPage,
       };
+    case "SET-TOTAL-PAGES":
+      return {
+        ...state,
+        totalPages: action.totalPages,
+      };
     default:
       return state;
   }
@@ -54,4 +59,8 @@ function setCurrentPageAC(currentPage) {
   return { type: "SET-CURRENT-PAGE", currentPage: currentPage };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC };
+function setTotalPagesAC(totalPages) {
+  return { type: "SET-TOTAL-PAGES", totalPages: totalPages };
+}
+
+export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC };
