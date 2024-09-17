@@ -6,6 +6,9 @@ const initialState = {
     // { name: "Maria", id: "4", friend: true },
     // { name: "Tommy", id: "5", friend: true },
   ],
+  currentPage: 1,
+  pageSize: 7,
+  totalPages: 20,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -25,6 +28,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         users: action.users,
       };
+    case "SET-CURRENT-PAGE":
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
     default:
       return state;
   }
@@ -42,4 +50,8 @@ function setUsersAC(users) {
   return { type: "SET-USERS", users: users };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC, setUsersAC };
+function setCurrentPageAC(currentPage) {
+  return { type: "SET-CURRENT-PAGE", currentPage: currentPage };
+}
+
+export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC };
