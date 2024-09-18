@@ -6,7 +6,7 @@ import { Profile } from "./components/Profile/Profile";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import { FriendsContainer } from "./components/Friends/FriendsContainer";
 import { Feed } from "./components/Feed/Feed";
-import { Music } from "./components/Music/Music";
+import { MusicContainer } from "./components/Music/MusicContainer";
 import { Settings } from "./components/Settings/Settings";
 
 // LIBS
@@ -29,7 +29,7 @@ function App() {
             <Route path="/messenger/*" element={<MessengerContainer />} />
             <Route path="/friends" element={<FriendsContainer />} />
             <Route path="/feed" element={<Feed />} />
-            <Route path="/music" element={<Music />} />
+            <Route path="/music" element={<MusicContainer />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
           {/* ROUTING: END */}
