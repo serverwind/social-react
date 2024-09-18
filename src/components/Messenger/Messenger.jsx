@@ -1,10 +1,10 @@
 import { Chat } from "./Chat/Chat";
-import { Users } from "./Users/Users";
+import { UsersContainer } from "./Users/UsersContainer";
 
-function Messenger({ stateText, sendMessage, setUsers, messenger, users }) {
+function Messenger({ stateText, sendMessage, messenger }) {
   return (
     <section className="grid sm:grid-cols-[200px_1fr]">
-      <Users users={users} setUsers={setUsers} />
+      <UsersContainer />
       <Chat messenger={messenger} stateText={stateText} sendMessage={sendMessage} />
     </section>
   );
