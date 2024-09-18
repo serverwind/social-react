@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
-import { setPlayingAC } from "../../data/musicReducer";
+import { setTrackAC } from "../../data/musicReducer";
 import { Music } from "./Music";
 
 function mapDispatchToProps(dispatch) {
   return {
-    setPlaying: (id, status, link, artist, name, duration) => dispatch(setPlayingAC(id, status, link, artist, name, duration)),
+    setTrack: (id, link, artist, name, duration) => dispatch(setTrackAC(id, link, artist, name, duration)),
   };
 }
 
