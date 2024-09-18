@@ -1,4 +1,4 @@
-import { Friends } from "./Friends";
+import { FriendsAPIComponent } from "./FriendsAPIComponent";
 import { connect } from "react-redux";
 import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC } from "../../data/usersReducer";
 
@@ -21,6 +21,6 @@ function mapStateToProps(state) {
   };
 }
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
+const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsAPIComponent);
 
 export { FriendsContainer };
