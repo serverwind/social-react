@@ -2,15 +2,10 @@ import { Post } from "./Post";
 import { connect } from "react-redux";
 import { likeActionCreator } from "../../../../data/postReducer";
 
-function mapDispatchToProps(dispatch) {
-  return {
-    like: (id, likes) => {
-      let action = likeActionCreator(id, likes);
-      dispatch(action);
-    },
-  };
-}
+let actionCreators = {
+  like: likeActionCreator,
+};
 
-const PostContainer = connect(null, mapDispatchToProps)(Post);
+const PostContainer = connect(null, actionCreators)(Post);
 
 export { PostContainer };

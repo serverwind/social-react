@@ -8,19 +8,11 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    stateText: (text) => {
-      let action = stateTextActionCreator(text);
-      dispatch(action);
-    },
-    newPost: (id, text, likes, author, date) => {
-      let action = newPostActionCreater(id, text, likes, author, date);
-      dispatch(action);
-    },
-  };
-};
+let actionCreators = {
+  stateText: stateTextActionCreator,
+  newPost: newPostActionCreater,
+}
 
-const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
+const PostsContainer = connect(mapStateToProps, actionCreators)(Posts);
 
 export { PostsContainer };
