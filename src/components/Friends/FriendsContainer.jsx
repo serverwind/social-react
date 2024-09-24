@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC } from "../../data/usersReducer";
+import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC } from "../../data/usersReducer";
 import { Friends } from "./Friends";
 
 function mapDispatchToProps(dispatch) {
@@ -11,6 +11,7 @@ function mapDispatchToProps(dispatch) {
     setUsers: (users) => dispatch(setUsersAC(users)),
     setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
     setTotalPages: (totalPages) => dispatch(setTotalPagesAC(totalPages)),
+    setIsLoading: (value) => dispatch(setIsLoadingAC(value)),
   };
 }
 
@@ -20,6 +21,7 @@ function mapStateToProps(state) {
     currentPage: state.users.currentPage,
     pageSize: state.users.pageSize,
     totalPages: state.users.totalPages,
+    isLoading: state.users.isLoading,
   };
 }
 
@@ -33,8 +35,10 @@ class FriendsAPIComponent extends React.Component {
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
+    this.props.setIsLoading(true);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${pageNumber}&count=${this.props.pageSize}`).then((response) => {
       this.props.setUsers(response.data.items);
+      this.props.setIsLoading(false);
     });
   };
 
@@ -47,7 +51,7 @@ class FriendsAPIComponent extends React.Component {
 
     return (
       <section>
-        <Friends users={this.props.users} addFriend={this.props.addFriend} removeFriend={this.props.removeFriend} totalPages={this.props.totalPages} pageSize={this.props.pageSize} currentPage={this.props.currentPage} onPageChanged={this.onPageChanged} />
+        <Friends users={this.props.users} addFriend={this.props.addFriend} removeFriend={this.props.removeFriend} totalPages={this.props.totalPages} pageSize={this.props.pageSize} currentPage={this.props.currentPage} onPageChanged={this.onPageChanged} isLoading={this.props.isLoading} />
       </section>
     );
   }

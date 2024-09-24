@@ -9,6 +9,7 @@ const initialState = {
   currentPage: 1,
   pageSize: 7,
   totalPages: 20,
+  isLoading: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -38,6 +39,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         totalPages: action.totalPages,
       };
+    case "SET-IS-LOADING":
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
     default:
       return state;
   }
@@ -63,4 +69,8 @@ function setTotalPagesAC(totalPages) {
   return { type: "SET-TOTAL-PAGES", totalPages: totalPages };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC };
+function setIsLoadingAC(value) {
+  return { type: "SET-IS-LOADING", isLoading: value };
+}
+
+export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC };
