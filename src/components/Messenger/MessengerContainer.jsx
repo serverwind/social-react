@@ -10,20 +10,12 @@ let mapStateToProps = (state) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    stateText: (text) => {
-      let action = messengerInputActionCreator(text);
-      dispatch(action);
-    },
-    sendMessage: (id, text) => {
-      let action = sendMessageActionCreator(id, text);
-      dispatch(action);
-    },
-    setUsers: (users) => dispatch(setUsersAC(users)),
-  };
-};
+let actionCreators = {
+  stateText: messengerInputActionCreator,
+  sendMessage: sendMessageActionCreator,
+  setUsers: setUsersAC,
+}
 
-const MessengerContainer = connect(mapStateToProps, mapDispatchToProps)(Messenger);
+const MessengerContainer = connect(mapStateToProps, actionCreators)(Messenger);
 
 export { MessengerContainer };

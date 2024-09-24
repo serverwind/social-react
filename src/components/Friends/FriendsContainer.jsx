@@ -4,16 +4,14 @@ import axios from "axios";
 import { addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC } from "../../data/usersReducer";
 import { Friends } from "./Friends";
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addFriend: (id) => dispatch(addFriendAC(id)),
-    removeFriend: (id) => dispatch(removeFriendAC(id)),
-    setUsers: (users) => dispatch(setUsersAC(users)),
-    setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-    setTotalPages: (totalPages) => dispatch(setTotalPagesAC(totalPages)),
-    setIsLoading: (value) => dispatch(setIsLoadingAC(value)),
-  };
-}
+let actionCreators = {
+  addFriend: addFriendAC,
+  removeFriend: removeFriendAC,
+  setUsers: setUsersAC,
+  setCurrentPage: setCurrentPageAC,
+  setTotalPages: setTotalPagesAC,
+  setIsLoading: setIsLoadingAC,
+};
 
 function mapStateToProps(state) {
   return {
@@ -57,6 +55,6 @@ class FriendsAPIComponent extends React.Component {
   }
 }
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsAPIComponent);
+const FriendsContainer = connect(mapStateToProps, actionCreators)(FriendsAPIComponent);
 
 export { FriendsContainer };

@@ -10,11 +10,9 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setUsers: (users) => dispatch(setUsersAC(users)),
-  };
-}
+let actionCreators = {
+  setUsers: setUsersAC,
+};
 
 class UsersAPIComponent extends React.Component {
   componentDidMount() {
@@ -28,6 +26,6 @@ class UsersAPIComponent extends React.Component {
   }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+const UsersContainer = connect(mapStateToProps, actionCreators)(UsersAPIComponent);
 
 export { UsersContainer };
