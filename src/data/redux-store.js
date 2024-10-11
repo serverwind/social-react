@@ -4,6 +4,7 @@ import { messengerReducer } from "./messengerReducer";
 import { usersReducer } from "./usersReducer";
 import { linksReducer } from "./linksReducer";
 import { musicReducer } from "./musicReducer";
+import { profileReducer } from "./profileReducer";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     users: usersReducer,
     links: linksReducer,
     music: musicReducer,
+    profile: profileReducer,
   },
 });
 

@@ -2,7 +2,7 @@
 import { Header } from "./components/Header/Header";
 import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
-import { Profile } from "./components/Profile/Profile";
+import { ProfileContainer } from "./components/Profile/ProfileContainer";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import { FriendsContainer } from "./components/Friends/FriendsContainer";
 import { Feed } from "./components/Feed/Feed";
@@ -24,8 +24,8 @@ function App() {
 
           {/* ROUTING */}
           <Routes>
-            <Route path="/" element={<Profile />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<ProfileContainer />} />
+            <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/messenger/*" element={<MessengerContainer />} />
             <Route path="/friends" element={<FriendsContainer />} />
             <Route path="/feed" element={<Feed />} />
