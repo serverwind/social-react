@@ -1,5 +1,19 @@
 let initialState = {
-  profile: null,
+  profile: {
+    aboutMe: "Frontend Developer",
+    contacts: {
+      website: "serverwind.github.io",
+      github: "github.com/serverwind",
+    },
+    lookingForAJob: true,
+    lookingForAJobDescription: "",
+    fullName: "Alex Lestra",
+    userId: 0,
+    photos: {
+      small: "",
+      large: "",
+    },
+  },
 };
 
 const profileReducer = (state = initialState, action) => {
