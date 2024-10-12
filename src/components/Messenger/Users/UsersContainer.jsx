@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Users } from "./Users";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -14,16 +14,14 @@ let actionCreators = {
   setUsers: setUsersAC,
 };
 
-class UsersAPIComponent extends React.Component {
-  componentDidMount() {
+function UsersAPIComponent(props) {
+  useEffect(() => {
     axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-      this.props.setUsers(response.data.items);
+      props.setUsers(response.data.items);
     });
-  }
+  }, []);
 
-  render() {
-    return <Users users={this.props.users} />;
-  }
+  return <Users users={props.users} />;
 }
 
 const UsersContainer = connect(mapStateToProps, actionCreators)(UsersAPIComponent);

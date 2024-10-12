@@ -7,12 +7,12 @@ import { setProfileAC } from "../../data/profileReducer";
 
 function ProfileContainerAPI(props) {
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then((response) => {
+    axios.get('https://social-network.samuraijs.com/api/1.0/profile/7').then((response) => {
       props.setProfileAC(response.data);
     });
-  });
+  }, []);
   
-  return <Profile profile={props.profile} />
+  return <Profile {...props} profile={props.profile} />
 }
 
 let mapStateToProps = (state) => {

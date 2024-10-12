@@ -15,7 +15,7 @@ const profileReducer = (state = initialState, action) => {
 };
 
 function setProfileAC(profile) {
-  return { type: "SET-PROFILE", profile };
+  return { type: "SET-PROFILE", profile: profile };
 }
 
 export { profileReducer, setProfileAC };
