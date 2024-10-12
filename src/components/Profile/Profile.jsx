@@ -2,10 +2,10 @@ import { Brand } from "./Brand/Brand";
 import { Bio } from "./Bio/Bio";
 import { PostsContainer } from "./Posts/PostsContainer";
 
-function Profile(props) {
+function Profile() {
   return (
     <main className="flex-shrink-0 sm:h-screen sm:overflow-y-auto">
-      <Brand profile={props.profile} />
+      <Brand />
       <Bio />
       <PostsContainer />
     </main>
