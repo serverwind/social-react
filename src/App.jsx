@@ -25,7 +25,7 @@ function App() {
           {/* ROUTING */}
           <Routes>
             <Route path="/" element={<ProfileContainer />} />
-            <Route path="/profile/*" element={<ProfileContainer />} />
+            <Route path="/profile/:userId" element={<ProfileContainer />} />
             <Route path="/messenger/*" element={<MessengerContainer />} />
             <Route path="/friends" element={<FriendsContainer />} />
             <Route path="/feed" element={<Feed />} />
