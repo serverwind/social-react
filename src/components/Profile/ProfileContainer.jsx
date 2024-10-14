@@ -9,6 +9,9 @@ function ProfileContainerAPI(props) {
   // get userId params to render data of opened profile
   const userId = useParams();
 
+  // if url without params render default profile
+  userId.userId ? "" : userId.userId = 31656
+
   useEffect(() => {
     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId.userId}`).then((response) => {
       props.setProfileAC(response.data);
