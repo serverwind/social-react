@@ -5,6 +5,7 @@ import { usersReducer } from "./usersReducer";
 import { linksReducer } from "./linksReducer";
 import { musicReducer } from "./musicReducer";
 import { profileReducer } from "./profileReducer";
+import { authReducer } from "./authReducer";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     links: linksReducer,
     music: musicReducer,
     profile: profileReducer,
+    auth: authReducer,
   },
 });
 
