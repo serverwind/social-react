@@ -8,21 +8,15 @@ let actionCreators = {
   removeFriend: removeFriendAC,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.users.users,
-  };
-};
-
 function FollowContainerAPI(props) {
   function onAddFriend() {
-    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, { withCredentials: true, headers: { "API-KEY": "b7ef8bad-0791-4860-931e-92664d" } }).then((response) => {
-      response.data.resultCode === 0 ? props.addFriend(props.id) : null;
-    });
+    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
+        response.data.resultCode === 0 ? props.addFriend(props.id) : null;
+      });
   }
 
   function onRemoveFriend() {
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, { withCredentials: true, headers: { "API-KEY": "b7ef8bad-0791-4860-931e-92664d" } }).then((response) => {
+    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
       response.data.resultCode === 0 ? props.removeFriend(props.id) : null;
     });
   }
@@ -30,6 +24,6 @@ function FollowContainerAPI(props) {
   return <Follow {...props} onAddFriend={onAddFriend} onRemoveFriend={onRemoveFriend} />;
 }
 
-const FollowContainer = connect(mapStateToProps, actionCreators)(FollowContainerAPI);
+const FollowContainer = connect(null, actionCreators)(FollowContainerAPI);
 
 export { FollowContainer };

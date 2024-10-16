@@ -23,7 +23,7 @@ function mapStateToProps(state) {
 
 function FriendsAPIComponent(props) {
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true, headers: {"API-KEY": "b7ef8bad-0791-4860-931e-92664d"} }).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true }).then((response) => {
       props.setUsers(response.data.items);
       props.setTotalPages(response.data.totalCount);
     });
@@ -31,7 +31,7 @@ function FriendsAPIComponent(props) {
 
   useEffect(() => {
     props.setIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true, headers: {"API-KEY": "b7ef8bad-0791-4860-931e-92664d"} }).then((response) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true }).then((response) => {
       props.setUsers(response.data.items);
       props.setIsLoading(false);
     });
