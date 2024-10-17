@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Users } from "./Users";
 import { connect } from "react-redux";
-import axios from "axios";
 import { setUsersAC } from "../../../data/usersReducer";
+import { getMessengerChats } from "../../../api/api";
 
 function mapStateToProps(state) {
   return {
@@ -16,7 +16,7 @@ let actionCreators = {
 
 function UsersAPIComponent(props) {
   useEffect(() => {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
+    getMessengerChats().then((response) => {
       props.setUsers(response.data.items);
     });
   }, []);

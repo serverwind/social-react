@@ -1,19 +1,19 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Profile } from "./Profile";
 import { setProfileAC } from "../../data/profileReducer";
+import { getProfile } from "../../api/api";
 
 function ProfileContainerAPI(props) {
   // get userId params to render data of opened profile
   const userId = useParams();
 
   // if url without params render default profile
-  userId.userId ? "" : userId.userId = 31656
+  userId.userId ? "" : (userId.userId = 31656);
 
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId.userId}`).then((response) => {
+    getProfile(userId.userId).then((response) => {
       props.setProfileAC(response.data);
     });
   }, []);

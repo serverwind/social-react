@@ -1,12 +1,12 @@
 import { Login } from "./Login";
-import axios from "axios";
+import { loginUser } from "../../api/api";
 import { useEffect } from "react";
 import { setUserDataAC } from "../../data/authReducer";
 import { connect } from "react-redux";
 
 function LoginContainerAPI(props) {
   useEffect(() => {
-    axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", { withCredentials: true }).then((response) => {
+    loginUser().then((response) => {
       response.data.resultCode === 0 ? props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login) : null
     });
   });

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import { setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC } from "../../data/usersReducer";
 import { Friends } from "./Friends";
+import { getUsers } from "../../api/api";
 
 let actionCreators = {
   setUsers: setUsersAC,
@@ -23,7 +23,7 @@ function mapStateToProps(state) {
 
 function FriendsAPIComponent(props) {
   useEffect(() => {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true }).then((response) => {
+    getUsers(props.currentPage, props.pageSize).then((response) => {
       props.setUsers(response.data.items);
       props.setTotalPages(response.data.totalCount);
     });
@@ -31,7 +31,7 @@ function FriendsAPIComponent(props) {
 
   useEffect(() => {
     props.setIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${props.currentPage}&count=${props.pageSize}`, { withCredentials: true }).then((response) => {
+    getUsers(props.currentPage, props.pageSize).then((response) => {
       props.setUsers(response.data.items);
       props.setIsLoading(false);
     });
@@ -40,7 +40,7 @@ function FriendsAPIComponent(props) {
   const onPageChanged = (pageNumber) => {
     props.setCurrentPage(pageNumber);
     props.setIsLoading(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${pageNumber}&count=${props.pageSize}`).then((response) => {
+    getUsers(pageNumber, props.pageSize).then((response) => {
       props.setUsers(response.data.items);
       props.setIsLoading(false);
     });
