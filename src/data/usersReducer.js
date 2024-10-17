@@ -1,11 +1,5 @@
 const initialState = {
-  users: [
-    // { name: "Emily", id: "1", friend: true },
-    // { name: "Jimmy", id: "2", friend: false },
-    // { name: "Sally", id: "3", friend: false },
-    // { name: "Maria", id: "4", friend: true },
-    // { name: "Tommy", id: "5", friend: true },
-  ],
+  users: [],
   currentPage: 1,
   pageSize: 7,
   totalPages: 20,

@@ -1,5 +1,8 @@
+// axios request didn't work (403) just because
+// API server is dead
+
+// import axios from "axios";
 import { connect } from "react-redux";
-import axios from "axios";
 import { addFriendAC, removeFriendAC } from "../../../data/usersReducer";
 import { Follow } from "./Follow";
 
@@ -10,15 +13,19 @@ let actionCreators = {
 
 function FollowContainerAPI(props) {
   function onAddFriend() {
-    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
-        response.data.resultCode === 0 ? props.addFriend(props.id) : null;
-      });
+    // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
+    //     response.data.resultCode === 0 ? props.addFriend(props.id) : null;
+    //   });
+
+    props.addFriend(props.id);
   }
 
   function onRemoveFriend() {
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
-      response.data.resultCode === 0 ? props.removeFriend(props.id) : null;
-    });
+    // axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, { withCredentials: true, headers: { "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16" } }).then((response) => {
+    //   response.data.resultCode === 0 ? props.removeFriend(props.id) : null;
+    // });
+
+    props.removeFriend(props.id);
   }
 
   return <Follow {...props} onAddFriend={onAddFriend} onRemoveFriend={onRemoveFriend} />;
