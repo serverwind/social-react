@@ -1,0 +1,15 @@
+{
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "module": "es6",
+    "jsx": "preserve",
+    "target": "es5",
+    "allowJs": true
+  }
+}

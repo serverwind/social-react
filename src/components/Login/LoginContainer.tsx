@@ -4,21 +4,34 @@ import { useEffect } from "react";
 import { setUserDataAC } from "../../data/authReducer";
 import { connect } from "react-redux";
 
-function LoginContainerAPI(props) {
+type LoginContainerPropsType = {
+  setUserData: (id: number, email: string, login: string) => void;
+};
+
+function LoginContainerAPI({ ...props }: LoginContainerPropsType) {
   useEffect(() => {
     loginUser().then((response) => {
-      response.data.resultCode === 0 ? props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login) : null
+      response.data.resultCode === 0 ? props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login) : null;
     });
   });
 
   return (
     <div>
-      <Login {...props}  />
+      <Login {...props} />
     </div>
   );
 }
 
-let mapStateToProps = (state) => {
+type StateType = {
+  auth: {
+    login: string;
+    id: number;
+    email: string;
+    isAuth: boolean;
+  };
+};
+
+let mapStateToProps = (state: StateType) => {
   return {
     login: state.auth.login,
     id: state.auth.id,

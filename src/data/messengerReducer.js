@@ -1,7 +1,7 @@
 let initialState = {
   messages: [
-    { message: "Hello, how are you?", id: "1" },
-    { message: "Thanks!", id: "2" },
+    { message: "Hello, how are you?", id: "1", key: "1" },
+    { message: "Thanks!", id: "2", key: "2" },
   ],
   input: { text: "" },
 };

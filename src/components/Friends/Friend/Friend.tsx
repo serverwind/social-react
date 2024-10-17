@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { FollowContainer } from "./FollowContainer";
 
-function Friend({ id, name, friend }) {
+type FriendProps = {
+  id: number;
+  name: string;
+  friend: boolean;
+  followUser: (id: number) => void;
+};
+
+function Friend({ id, name, friend }: FriendProps) {
   return (
     <li key={id} className="flex flex-col text-center">
       <NavLink to={`/profile/${id}`}>

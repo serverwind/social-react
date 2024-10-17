@@ -11,7 +11,17 @@ let actionCreators = {
   setIsLoading: setIsLoadingAC,
 };
 
-function mapStateToProps(state) {
+type StateType = {
+  users: {
+    users: [];
+    currentPage: number;
+    pageSize: number;
+    totalPages: number;
+    isLoading: boolean;
+  };
+};
+
+function mapStateToProps({ ...state }: StateType) {
   return {
     users: state.users.users,
     currentPage: state.users.currentPage,
@@ -21,7 +31,19 @@ function mapStateToProps(state) {
   };
 }
 
-function FriendsAPIComponent(props) {
+type FriendsAPIComponentType = {
+  users: [];
+  currentPage: number;
+  pageSize: number;
+  totalPages: number;
+  setUsers: Function;
+  setTotalPages: Function;
+  setCurrentPage: Function;
+  setIsLoading: Function;
+  isLoading: boolean;
+};
+
+function FriendsAPIComponent({ ...props }: FriendsAPIComponentType) {
   useEffect(() => {
     getUsers(props.currentPage, props.pageSize).then((response) => {
       props.setUsers(response.data.items);
@@ -37,7 +59,7 @@ function FriendsAPIComponent(props) {
     });
   }, []);
 
-  const onPageChanged = (pageNumber) => {
+  const onPageChanged = (pageNumber: number) => {
     props.setCurrentPage(pageNumber);
     props.setIsLoading(true);
     getUsers(pageNumber, props.pageSize).then((response) => {

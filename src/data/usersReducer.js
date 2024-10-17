@@ -4,6 +4,7 @@ const initialState = {
   pageSize: 7,
   totalPages: 20,
   isLoading: false,
+  inProgress: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -38,6 +39,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isLoading: action.isLoading,
       };
+    case "SET-IN-PROGRESS":
+      return {
+        ...state,
+        inProgress: action.inProgress,
+      };
     default:
       return state;
   }
@@ -67,4 +73,8 @@ function setIsLoadingAC(value) {
   return { type: "SET-IS-LOADING", isLoading: value };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC };
+function setInProgressAC(value) {
+  return { type: "SET-IN-PROGRESS", inProgress: value };
+}
+
+export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC, setInProgressAC };

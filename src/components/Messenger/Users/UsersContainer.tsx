@@ -4,7 +4,18 @@ import { connect } from "react-redux";
 import { setUsersAC } from "../../../data/usersReducer";
 import { getMessengerChats } from "../../../api/api";
 
-function mapStateToProps(state) {
+type StateType = {
+  users: {
+    users: [
+      {
+        id: number;
+        name: string;
+      }
+    ];
+  };
+};
+
+function mapStateToProps(state: StateType) {
   return {
     users: state.users,
   };
@@ -14,7 +25,19 @@ let actionCreators = {
   setUsers: setUsersAC,
 };
 
-function UsersAPIComponent(props) {
+type UsersAPIComponentPropsType = {
+  users: {
+    users: [
+      {
+        id: number;
+        name: string;
+      }
+    ];
+  };
+  setUsers: (users: any) => void;
+};
+
+function UsersAPIComponent(props: UsersAPIComponentPropsType) {
   useEffect(() => {
     getMessengerChats().then((response) => {
       props.setUsers(response.data.items);
