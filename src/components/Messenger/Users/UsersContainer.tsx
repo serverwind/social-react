@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Users } from "./Users";
+import Users from "./Users";
 import { connect } from "react-redux";
 import { setUsersAC } from "../../../data/usersReducer";
 import { getMessengerChats } from "../../../api/api";
@@ -21,7 +21,7 @@ function mapStateToProps(state: StateType) {
   };
 }
 
-let actionCreators = {
+const actionCreators = {
   setUsers: setUsersAC,
 };
 
@@ -47,6 +47,4 @@ function UsersAPIComponent(props: UsersAPIComponentPropsType) {
   return <Users users={props.users} />;
 }
 
-const UsersContainer = connect(mapStateToProps, actionCreators)(UsersAPIComponent);
-
-export { UsersContainer };
+export const UsersContainer = connect(mapStateToProps, actionCreators)(UsersAPIComponent);

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Message } from "./Message/Message";
+import Message from "./Message/Message";
 
 type ChatProps = {
   messenger: {
@@ -15,7 +15,7 @@ type ChatProps = {
   sendMessage: (id: number, text: string) => void;
 };
 
-function Chat({ messenger, stateText, sendMessage }: ChatProps) {
+export default function Chat({ messenger, stateText, sendMessage }: ChatProps) {
   let newMessageText = useRef<HTMLInputElement>(null);
 
   function onStateText() {
@@ -44,5 +44,3 @@ function Chat({ messenger, stateText, sendMessage }: ChatProps) {
     </div>
   );
 }
-
-export { Chat };

@@ -5,10 +5,10 @@
 
 import { connect } from "react-redux";
 import { addFriendAC, removeFriendAC, setInProgressAC } from "../../../data/usersReducer";
-import { Follow } from "./Follow";
+import Follow from "./Follow";
 import { followUser, unfollowUser } from "../../../api/api";
 
-let actionCreators = {
+const actionCreators = {
   addFriend: addFriendAC,
   removeFriend: removeFriendAC,
   setInProgress: setInProgressAC,
@@ -20,7 +20,7 @@ type StateType = {
   };
 };
 
-let mapStateToProps = (state: StateType) => {
+const mapStateToProps = (state: StateType) => {
   return {
     inProgress: state.users.inProgress,
   };
@@ -59,6 +59,4 @@ function FollowContainerAPI({ ...props }: FollowContainerAPIPropsType) {
   return <Follow {...props} inProgress={props.inProgress} onAddFriend={onAddFriend} onRemoveFriend={onRemoveFriend} />;
 }
 
-const FollowContainer = connect(mapStateToProps, actionCreators)(FollowContainerAPI);
-
-export { FollowContainer };
+export const FollowContainer = connect(mapStateToProps, actionCreators)(FollowContainerAPI);

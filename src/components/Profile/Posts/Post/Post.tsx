@@ -1,5 +1,13 @@
+type PostProps = {
+  id: number;
+  post: string;
+  likes: number;
+  author: string;
+  date: string;
+  like: (id: number, likes: number) => void;
+};
 
-function Post({ id, post, likes, author, date, like }) {
+export default function Post({ id, post, likes, author, date, like }: PostProps) {
   function setLike() {
     likes++;
     like(id, likes);
@@ -25,5 +33,3 @@ function Post({ id, post, likes, author, date, like }) {
     </div>
   );
 }
-
-export { Post };

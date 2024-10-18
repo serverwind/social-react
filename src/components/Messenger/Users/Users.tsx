@@ -1,4 +1,4 @@
-import { User } from "./User/User";
+import User from "./User/User";
 import s from "./Users.module.css";
 
 type UsersProps = {
@@ -12,7 +12,7 @@ type UsersProps = {
   };
 };
 
-function Users({ ...props }: UsersProps) {
+export default function Users({ ...props }: UsersProps) {
   debugger;
   return (
     <div className="bg-gray-200 p-4">
@@ -24,5 +24,3 @@ function Users({ ...props }: UsersProps) {
     </div>
   );
 }
-
-export { Users };

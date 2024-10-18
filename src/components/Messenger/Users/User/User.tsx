@@ -6,7 +6,7 @@ type UserProps = {
   active: string;
 };
 
-function User({ name, chat, active }: UserProps) {
+export default function User({ name, chat, active }: UserProps) {
   return (
     <li className="text-lg">
       <NavLink className={active} to={chat}>
@@ -15,5 +15,3 @@ function User({ name, chat, active }: UserProps) {
     </li>
   );
 }
-
-export { User };

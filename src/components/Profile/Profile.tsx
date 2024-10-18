@@ -1,8 +1,19 @@
-import { Brand } from "./Brand/Brand";
-import { Bio } from "./Bio/Bio";
+import Brand from "./Brand/Brand";
+import Bio from "./Bio/Bio";
 import { PostsContainer } from "./Posts/PostsContainer";
 
-function Profile(props) {
+type ProfileProps = {
+  profile: {
+    fullName: string;
+    lookingForAJob: boolean;
+    aboutMe: string;
+    contacts: {
+      website: string;
+    };
+  };
+};
+
+export default function Profile(props: ProfileProps) {
   return (
     <main className="flex-shrink-0 sm:h-screen sm:overflow-y-auto">
       <Brand name={props.profile.fullName} />
@@ -11,5 +22,3 @@ function Profile(props) {
     </main>
   );
 }
-
-export { Profile };

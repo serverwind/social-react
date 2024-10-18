@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC } from "../../data/usersReducer";
-import { Friends } from "./Friends";
+import Friends from "./Friends";
 import { getUsers } from "../../api/api";
 
-let actionCreators = {
+const actionCreators = {
   setUsers: setUsersAC,
   setCurrentPage: setCurrentPageAC,
   setTotalPages: setTotalPagesAC,
@@ -74,6 +74,4 @@ function FriendsAPIComponent({ ...props }: FriendsAPIComponentType) {
   );
 }
 
-const FriendsContainer = connect(mapStateToProps, actionCreators)(FriendsAPIComponent);
-
-export { FriendsContainer };
+export const FriendsContainer = connect(mapStateToProps, actionCreators)(FriendsAPIComponent);

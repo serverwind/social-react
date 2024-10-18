@@ -1,4 +1,11 @@
-function UserInfo(props) {
+type UserInfoProps = {
+  name: string;
+  job: boolean;
+  aboutMe: string;
+  website: string;
+};
+
+export default function UserInfo(props: UserInfoProps) {
   return (
     <ul className="text-lg">
       <li>
@@ -16,5 +23,3 @@ function UserInfo(props) {
     </ul>
   );
 }
-
-export { UserInfo };

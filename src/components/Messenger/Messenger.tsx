@@ -1,4 +1,4 @@
-import { Chat } from "./Chat/Chat";
+import Chat from "./Chat/Chat";
 import { UsersContainer } from "./Users/UsersContainer";
 
 type MessengerProps = {
@@ -15,7 +15,7 @@ type MessengerProps = {
   sendMessage: (id: number, text: string) => void;
 };
 
-function Messenger({ messenger, stateText, sendMessage }: MessengerProps) {
+export default function Messenger({ messenger, stateText, sendMessage }: MessengerProps) {
   return (
     <section className="grid sm:grid-cols-[200px_1fr]">
       <UsersContainer />
@@ -23,5 +23,3 @@ function Messenger({ messenger, stateText, sendMessage }: MessengerProps) {
     </section>
   );
 }
-
-export { Messenger };

@@ -1,6 +1,6 @@
-import { Friend } from "./Friend/Friend";
-import { Pagination } from "./Pagination/Pagination";
-import { Loader } from "../Loader/Loader";
+import Friend from "./Friend/Friend";
+import Pagination from "./Pagination/Pagination";
+import Loader from "../Loader/Loader";
 
 type FriendsProps = {
   isLoading: boolean;
@@ -11,7 +11,7 @@ type FriendsProps = {
   onPageChanged: (page: number) => void;
 };
 
-function Friends({ ...props }: FriendsProps) {
+export default function Friends({ ...props }: FriendsProps) {
   let pagesAmount: number = Math.ceil(props.totalPages / props.pageSize);
   let pages: number[] = [];
   for (let i = 1; i < pagesAmount + 1; i++) {
@@ -29,5 +29,3 @@ function Friends({ ...props }: FriendsProps) {
     </section>
   );
 }
-
-export { Friends };

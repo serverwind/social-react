@@ -8,7 +8,7 @@ type FriendProps = {
   followUser: (id: number) => void;
 };
 
-function Friend({ id, name, friend }: FriendProps) {
+export default function Friend({ id, name, friend }: FriendProps) {
   return (
     <li key={id} className="flex flex-col text-center">
       <NavLink to={`/profile/${id}`}>
@@ -18,5 +18,3 @@ function Friend({ id, name, friend }: FriendProps) {
     </li>
   );
 }
-
-export { Friend };

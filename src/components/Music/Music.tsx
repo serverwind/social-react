@@ -1,9 +1,41 @@
 import { useRef } from "react";
 
-function Music(props) {
+type MusicType = {
+  player: {
+    id: string;
+    link: string;
+    artist: string;
+    name: string;
+    duration: string;
+  };
+  items: {
+    id: string;
+    link: string;
+    artist: string;
+    name: string;
+    duration: string;
+  }[];
+  music: {
+    player: {
+      artist: string;
+      name: string;
+      duration: string;
+    };
+    items: {
+      id: string;
+      link: string;
+      artist: string;
+      name: string;
+      duration: string;
+    }[];
+  };
+  setTrack: (id: number, link: string, artist: string, name: string, duration: string) => void;
+};
+
+function Music(props: MusicType) {
   const audioRefs = useRef({});
 
-  function setTrack(id, link, artist, name, duration) {
+  function setTrack(id: number, link: string, artist: string, name: string, duration: string) {
     for (let key in audioRefs.current) {
       if (key !== id) {
         audioRefs.current[key].pause();

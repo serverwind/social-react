@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { LoginContainer } from "../Login/LoginContainer";
 
-type HeaderProps = {};
-
-function Header({}: HeaderProps) {
+export default function Header() {
   return (
     <header className="bg-gray-800 p-4 flex justify-between">
       <NavLink className="text-3xl font-bold text-white" to="/">
@@ -13,5 +11,3 @@ function Header({}: HeaderProps) {
     </header>
   );
 }
-
-export { Header };

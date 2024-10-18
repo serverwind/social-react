@@ -6,7 +6,7 @@ type PaginationProps = {
   onPageChanged: (page: number) => void;
 };
 
-function Pagination({ pages, currentPage, onPageChanged }: PaginationProps) {
+export default function Pagination({ pages, currentPage, onPageChanged }: PaginationProps) {
   return (
     <div className="overflow-x-auto w-11/12 flex gap-2">
       {pages.map((page) => (
@@ -17,5 +17,3 @@ function Pagination({ pages, currentPage, onPageChanged }: PaginationProps) {
     </div>
   );
 }
-
-export { Pagination };

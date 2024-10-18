@@ -5,7 +5,7 @@ type FollowProps = {
   onAddFriend: () => void;
 };
 
-function Follow({ friend, inProgress, onRemoveFriend, onAddFriend }: FollowProps) {
+export default function Follow({ friend, inProgress, onRemoveFriend, onAddFriend }: FollowProps) {
   return friend ? (
     <button disabled={inProgress} onClick={onRemoveFriend} className="bg-gray-100 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300">
       <span className="mgc_user_remove_line"></span>
@@ -16,5 +16,3 @@ function Follow({ friend, inProgress, onRemoveFriend, onAddFriend }: FollowProps
     </button>
   );
 }
-
-export { Follow };

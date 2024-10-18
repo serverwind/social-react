@@ -1,4 +1,4 @@
-import { Login } from "./Login";
+import Login from "./Login";
 import { loginUser } from "../../api/api";
 import { useEffect } from "react";
 import { setUserDataAC } from "../../data/authReducer";
@@ -31,7 +31,7 @@ type StateType = {
   };
 };
 
-let mapStateToProps = (state: StateType) => {
+const mapStateToProps = (state: StateType) => {
   return {
     login: state.auth.login,
     id: state.auth.id,
@@ -40,10 +40,8 @@ let mapStateToProps = (state: StateType) => {
   };
 };
 
-let actionCreators = {
+const actionCreators = {
   setUserData: setUserDataAC,
 };
 
-const LoginContainer = connect(mapStateToProps, actionCreators)(LoginContainerAPI);
-
-export { LoginContainer };
+export const LoginContainer = connect(mapStateToProps, actionCreators)(LoginContainerAPI);
