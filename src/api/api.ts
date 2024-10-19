@@ -32,7 +32,7 @@ function getMessengerChats() {
   return instanceBase.get("/users");
 }
 
-function getProfile(id: number) {
+function getProfile(id: string) {
   return instanceBase.get(`/profile/${id}`);
 }
 

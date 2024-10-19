@@ -45,28 +45,45 @@ type FriendsAPIComponentType = {
 
 function FriendsAPIComponent({ ...props }: FriendsAPIComponentType) {
   useEffect(() => {
-    getUsers(props.currentPage, props.pageSize).then((response) => {
-      props.setUsers(response.data.items);
-      props.setTotalPages(response.data.totalCount);
-    });
+    async function ProcessUsersData() {
+      try {
+        const response = await getUsers(props.currentPage, props.pageSize);
+        props.setUsers(response.data.items);
+        props.setTotalPages(response.data.totalCount);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    ProcessUsersData();
   }, []);
 
   useEffect(() => {
-    props.setIsLoading(true);
-    getUsers(props.currentPage, props.pageSize).then((response) => {
-      props.setUsers(response.data.items);
-      props.setIsLoading(false);
-    });
+    async function ProcessUsersData() {
+      try {
+        const response = await getUsers(props.currentPage, props.pageSize);
+        props.setUsers(response.data.items);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        props.setIsLoading(false);
+      }
+    }
+    ProcessUsersData();
   }, []);
 
-  const onPageChanged = (pageNumber: number) => {
-    props.setCurrentPage(pageNumber);
+  async function onPageChanged(pageNumber: number) {
     props.setIsLoading(true);
-    getUsers(pageNumber, props.pageSize).then((response) => {
+    try {
+      const response = await getUsers(pageNumber, props.pageSize);
+      props.setCurrentPage(pageNumber);
       props.setUsers(response.data.items);
+    } catch (error) {
+      console.log(error);
+    } finally {
       props.setIsLoading(false);
-    });
-  };
+    }
+  }
+
   return (
     <section>
       <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} />

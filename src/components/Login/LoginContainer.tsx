@@ -4,16 +4,24 @@ import { useEffect } from "react";
 import { setUserDataAC } from "../../data/authReducer";
 import { connect } from "react-redux";
 
-type LoginContainerPropsType = {
+type PropsType = {
   setUserData: (id: number, email: string, login: string) => void;
 };
 
-function LoginContainerAPI({ ...props }: LoginContainerPropsType) {
+function LoginContainerAPI(props: PropsType) {
   useEffect(() => {
-    loginUser().then((response) => {
-      response.data.resultCode === 0 ? props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login) : null;
-    });
-  });
+    async function processLoginUser() {
+      try {
+        const response = await loginUser();
+        if (response.data.resultCode === 0) {
+          props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    processLoginUser();
+  }, []);
 
   return (
     <div>

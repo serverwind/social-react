@@ -39,9 +39,15 @@ type UsersAPIComponentPropsType = {
 
 function UsersAPIComponent(props: UsersAPIComponentPropsType) {
   useEffect(() => {
-    getMessengerChats().then((response) => {
-      props.setUsers(response.data.items);
-    });
+    async function processMessengerChats() {
+      try {
+        const response = await getMessengerChats();
+        props.setUsers(response.data.items);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    processMessengerChats();
   }, []);
 
   return <Users users={props.users} />;

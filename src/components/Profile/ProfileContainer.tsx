@@ -33,15 +33,21 @@ type StateType = {
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
   // get userId params to render data of opened profile
   const userIdPara = useParams();
-  let userId = userIdPara.userId;
+  let userId = String(userIdPara.userId);
 
   // if url without params render default profile
-  userId ? "" : (userId = "31656");
+  userId ? undefined : (userId = "31656");
 
   useEffect(() => {
-    getProfile(userId).then((response) => {
-      props.setProfileAC(response.data);
-    });
+    async function processGetProfile() {
+      try {
+        const response = await getProfile(userId);
+        props.setProfileAC(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    processGetProfile();
   }, []);
 
   return <Profile {...props} profile={props.profile} />;

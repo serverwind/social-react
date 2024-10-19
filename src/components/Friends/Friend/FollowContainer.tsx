@@ -6,6 +6,7 @@
 import { connect } from "react-redux";
 import { addFriendAC, removeFriendAC, setInProgressAC } from "../../../data/usersReducer";
 import Follow from "./Follow";
+import axios from "axios";
 import { followUser, unfollowUser } from "../../../api/api";
 
 const actionCreators = {
@@ -36,24 +37,30 @@ type FollowContainerAPIPropsType = {
 };
 
 function FollowContainerAPI({ ...props }: FollowContainerAPIPropsType) {
-  function onAddFriend() {
+  async function onAddFriend() {
     props.setInProgress(true);
-    followUser(props.id).then((response) => {
+    try {
+      const response = await followUser(props.id);
       response.data.resultCode === 0 ? props.addFriend(props.id) : null;
-    });
-
-    props.addFriend(props.id);
-    props.setInProgress(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      props.setInProgress(false);
+      props.addFriend(props.id); //temp, just because API server 403
+    }
   }
 
-  function onRemoveFriend() {
+  async function onRemoveFriend() {
     props.setInProgress(true);
-    unfollowUser(props.id).then((response) => {
+    try {
+      const response = await unfollowUser(props.id);
       response.data.resultCode === 0 ? props.removeFriend(props.id) : null;
-    });
-
-    props.removeFriend(props.id);
-    props.setInProgress(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      props.setInProgress(false);
+      props.removeFriend(props.id); //temp, just because API server 403
+    }
   }
 
   return <Follow {...props} inProgress={props.inProgress} onAddFriend={onAddFriend} onRemoveFriend={onRemoveFriend} />;
