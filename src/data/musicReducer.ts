@@ -13,7 +13,7 @@ const initialState = {
   },
 };
 
-const musicReducer = (state = initialState, action) => {
+const musicReducer = (state = initialState, action: { type: string; id: number; link: string; artist: string; name: string; duration: string }) => {
   switch (action.type) {
     case "SET-TRACK":
       return {
@@ -31,8 +31,8 @@ const musicReducer = (state = initialState, action) => {
   }
 };
 
-function setTrackAC(id, link, artist, name, duration) {
-  return { type: "SET-TRACK", id: id, link: link, artist: artist, name: name, duration: duration };
+function setTrackAC(id :number, link : string, artist : string, name : string, duration : string) {
+  return { type: "SET-TRACK", id, link, artist, name, duration };
 }
 
 export { musicReducer, setTrackAC };

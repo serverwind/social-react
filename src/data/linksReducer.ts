@@ -9,11 +9,6 @@ const initialState = {
   ],
 };
 
-const linksReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
+export const linksReducer = (state = initialState) => {
+  return state;
 };
-
-export { linksReducer };

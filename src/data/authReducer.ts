@@ -5,7 +5,7 @@ const initialState = {
   isAuth: false,
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: { type: string; data: any }) => {
   switch (action.type) {
     case "SET-USER-DATA":
       return {
@@ -18,7 +18,7 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-function setUserDataAC(id, email, login) {
+function setUserDataAC(id: number, email: string, login: string) {
   return { type: "SET-USER-DATA", data: { id, email, login } };
 }
 

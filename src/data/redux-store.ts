@@ -7,7 +7,7 @@ import { musicReducer } from "./musicReducer";
 import { profileReducer } from "./profileReducer";
 import { authReducer } from "./authReducer";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     posts: postReducer,
     messenger: messengerReducer,
@@ -18,5 +18,3 @@ const store = configureStore({
     auth: authReducer,
   },
 });
-
-export { store };

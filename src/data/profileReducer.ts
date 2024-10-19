@@ -1,4 +1,4 @@
-let initialState = {
+const initialState = {
   profile: {
     aboutMe: "Frontend Developer",
     contacts: {

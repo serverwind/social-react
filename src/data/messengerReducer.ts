@@ -1,4 +1,4 @@
-let initialState = {
+const initialState = {
   messages: [
     { message: "Hello, how are you?", id: "1", key: "1" },
     { message: "Thanks!", id: "2", key: "2" },
@@ -6,7 +6,7 @@ let initialState = {
   input: { text: "" },
 };
 
-function messengerReducer(state = initialState, action) {
+function messengerReducer(state = initialState, action: { type: string; text: string; id: number; message: string }) {
   switch (action.type) {
     case "CHANGE-MESSENGER-INPUT":
       return {
@@ -23,11 +23,11 @@ function messengerReducer(state = initialState, action) {
   return state;
 }
 
-function sendMessageActionCreator(id, message) {
+function sendMessageActionCreator(id: number, message: string) {
   return { type: "SEND-MESSAGE", id, message };
 }
 
-function messengerInputActionCreator(text) {
+function messengerInputActionCreator(text: string) {
   return { type: "CHANGE-MESSENGER-INPUT", text };
 }
 

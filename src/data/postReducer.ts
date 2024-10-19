@@ -1,4 +1,4 @@
-let initialState = {
+const initialState = {
   posts: [
     { id: "5", post: "Finished course and all practice of lessons 25-30.", likes: "5", author: "Alex Lestra", date: "1 day ago" },
     { id: "4", post: "Finished course and all practice of lessons 17-25.", likes: "10", author: "Alex Lestra", date: "2 days ago" },
@@ -9,7 +9,7 @@ let initialState = {
   input: { text: "" },
 };
 
-function postReducer(state = initialState, action) {
+function postReducer(state = initialState, action: { type: string; id: number; post: string; likes: number; author: string; date: string; text: string }) {
   switch (action.type) {
     case "ADD-POST":
       return {
@@ -25,21 +25,21 @@ function postReducer(state = initialState, action) {
     case "LIKE":
       return {
         ...state,
-        posts: state.posts.map((post) => (post.id === action.id ? { ...post, likes: action.likes } : post)),
+        posts: state.posts.map((post) => (post.id === String(action.id) ? { ...post, likes: action.likes } : post)),
       };
   }
   return state;
 }
 
-function newPostActionCreater(id, post, likes, author, date) {
+function newPostActionCreater(id: number, post: string, likes: number, author: string, date: string) {
   return { type: "ADD-POST", id, post, likes, author, date };
 }
 
-function stateTextActionCreator(text) {
+function stateTextActionCreator(text: string) {
   return { type: "CHANGE-TEXT", text };
 }
 
-function likeActionCreator(id, likes) {
+function likeActionCreator(id: number, likes: number) {
   return { type: "LIKE", id, likes };
 }
 

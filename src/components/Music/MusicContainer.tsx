@@ -2,26 +2,7 @@ import { connect } from "react-redux";
 import { setTrackAC } from "../../data/musicReducer";
 import { Music } from "./Music";
 
-type StateType = {
-  music: {
-    player: {
-      id: string;
-      link: string;
-      artist: string;
-      name: string;
-      duration: string;
-    };
-    items: {
-      id: string;
-      link: string;
-      artist: string;
-      name: string;
-      duration: string;
-    }[];
-  };
-};
-
-function mapStateToProps(state: StateType) {
+function mapStateToProps(state) {
   return {
     music: state.music,
   };

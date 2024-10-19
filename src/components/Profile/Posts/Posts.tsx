@@ -1,5 +1,5 @@
 import { PostContainer } from "./Post/PostContainer";
-import { Input } from "./Input/Input";
+import Input from "./Input/Input";
 
 type PostsProps = {
   posts: any;

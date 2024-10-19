@@ -7,7 +7,7 @@ import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import { FriendsContainer } from "./components/Friends/FriendsContainer";
 import Feed from "./components/Feed/Feed";
 import { MusicContainer } from "./components/Music/MusicContainer";
-import { Settings } from "./components/Settings/Settings";
+import Settings from "./components/Settings/Settings";
 
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";

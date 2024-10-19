@@ -7,17 +7,17 @@ const initialState = {
   inProgress: false,
 };
 
-const usersReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action: { type: string; id: number; users: []; currentPage: number; totalPages: number; isLoading: boolean; inProgress: boolean }) => {
   switch (action.type) {
     case "ADD-FRIEND":
       return {
         ...state,
-        users: state.users.map((user) => (user.id === action.id ? { ...user, followed: true } : user)),
+        users: state.users.map((user: { id: number }) => (user.id === action.id ? { ...user, followed: true } : user)),
       };
     case "REMOVE-FRIEND":
       return {
         ...state,
-        users: state.users.map((user) => (user.id === action.id ? { ...user, followed: false } : user)),
+        users: state.users.map((user: { id: number }) => (user.id === action.id ? { ...user, followed: false } : user)),
       };
     case "SET-USERS":
       return {
@@ -49,31 +49,31 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-function addFriendAC(id) {
+function addFriendAC(id: number) {
   return { type: "ADD-FRIEND", id: id };
 }
 
-function removeFriendAC(id) {
+function removeFriendAC(id: number) {
   return { type: "REMOVE-FRIEND", id: id };
 }
 
-function setUsersAC(users) {
+function setUsersAC(users: []) {
   return { type: "SET-USERS", users: users };
 }
 
-function setCurrentPageAC(currentPage) {
+function setCurrentPageAC(currentPage: number) {
   return { type: "SET-CURRENT-PAGE", currentPage: currentPage };
 }
 
-function setTotalPagesAC(totalPages) {
+function setTotalPagesAC(totalPages: number) {
   return { type: "SET-TOTAL-PAGES", totalPages: totalPages };
 }
 
-function setIsLoadingAC(value) {
+function setIsLoadingAC(value: boolean) {
   return { type: "SET-IS-LOADING", isLoading: value };
 }
 
-function setInProgressAC(value) {
+function setInProgressAC(value: boolean) {
   return { type: "SET-IN-PROGRESS", inProgress: value };
 }
 

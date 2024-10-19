@@ -4,10 +4,11 @@ import { App } from "./App.jsx";
 import { Provider } from "react-redux";
 import "./output.css";
 import "../node_modules/mingcute_icon/font/Mingcute.css";
-
 import { store } from "./data/redux-store";
 
-const root = createRoot(document.getElementById("root"));
+const rootDiv = document.getElementById("root") as HTMLElement;
+
+const root = createRoot(rootDiv);
 
 function render() {
   root.render(
@@ -18,4 +19,4 @@ function render() {
     </StrictMode>
   );
 }
-render(store.getState());
+render();
