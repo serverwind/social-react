@@ -12,11 +12,8 @@ type FriendsProps = {
 };
 
 export default function Friends({ ...props }: FriendsProps) {
-  let pagesAmount: number = Math.ceil(props.totalPages / props.pageSize);
-  let pages: number[] = [];
-  for (let i = 1; i < pagesAmount + 1; i++) {
-    pages.push(i);
-  }
+  const pagesAmount: number = Math.ceil(props.totalPages / props.pageSize);
+  const pages = Array.from({ length: pagesAmount }, (_, i) => i + 1);
 
   return (
     <section>

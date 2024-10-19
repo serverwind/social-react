@@ -5,7 +5,6 @@ type FriendProps = {
   id: number;
   name: string;
   friend: boolean;
-  followUser: (id: number) => void;
 };
 
 export default function Friend({ id, name, friend }: FriendProps) {
