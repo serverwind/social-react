@@ -1,6 +1,6 @@
-import Login from "./Login";
+import Button from "./Button";
 import { useEffect } from "react";
-import { loginUserTC } from "../../data/authReducer";
+import { loginUserTC } from "../../../data/authReducer";
 import { connect } from "react-redux";
 
 type PropsType = {
@@ -14,7 +14,7 @@ function LoginContainerAPI(props: PropsType) {
 
   return (
     <div>
-      <Login {...props} />
+      <Button {...props} />
     </div>
   );
 }

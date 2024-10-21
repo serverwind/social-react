@@ -16,6 +16,9 @@ type StateType = {
     totalPages: number;
     isLoading: boolean;
   };
+  auth: {
+    isAuth: boolean;
+  };
 };
 
 function mapStateToProps(state: StateType) {
@@ -25,6 +28,7 @@ function mapStateToProps(state: StateType) {
     pageSize: state.users.pageSize,
     totalPages: state.users.totalPages,
     isLoading: state.users.isLoading,
+    isAuth: state.auth.isAuth,
   };
 }
 
@@ -40,6 +44,9 @@ type FriendsAPIComponentType = {
   getUsers: Function;
   changePage: Function;
   isLoading: boolean;
+  auth: {
+    isAuth: boolean;
+  };
 };
 
 function FriendsAPIComponent(props: FriendsAPIComponentType) {
@@ -47,14 +54,13 @@ function FriendsAPIComponent(props: FriendsAPIComponentType) {
     props.getUsers(props.currentPage, props.pageSize);
   }, []);
 
-
   function onPageChanged(pageNumber: number) {
     props.changePage(pageNumber, props.pageSize);
   }
 
   return (
     <section>
-      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} />
+      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} auth={props.isAuth} />
     </section>
   );
 }

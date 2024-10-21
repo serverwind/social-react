@@ -23,12 +23,16 @@ type StateType = {
       }
     ];
   };
+  auth: {
+    isAuth: boolean;
+  };
 };
 
 const mapStateToProps = (state: StateType) => {
   return {
     messenger: state.messenger,
     users: state.users,
+    auth: state.auth.isAuth,
   };
 };
 
