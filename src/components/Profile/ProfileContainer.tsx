@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Profile from "./Profile";
-import { setProfileAC } from "../../data/profileReducer";
-import { getProfile } from "../../api/api";
+import { showProfileTC } from "../../data/profileReducer";
 
 type ProfileContainerPropsType = {
   profile: {
@@ -14,7 +13,7 @@ type ProfileContainerPropsType = {
       website: string;
     };
   };
-  setProfileAC: (profile: {}) => void;
+  showProfile: (id: string) => void;
 };
 
 type StateType = {
@@ -35,19 +34,8 @@ function ProfileContainerAPI(props: ProfileContainerPropsType) {
   const userIdPara = useParams();
   let userId = String(userIdPara.userId);
 
-  // if url without params render default profile
-  userId ? undefined : (userId = "31656");
-
   useEffect(() => {
-    async function processGetProfile() {
-      try {
-        const response = await getProfile(userId);
-        props.setProfileAC(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    processGetProfile();
+    props.showProfile(userId);
   }, []);
 
   return <Profile {...props} profile={props.profile} />;
@@ -57,4 +45,4 @@ let mapStateToProps = (state: StateType) => {
   return { profile: state.profile.profile };
 };
 
-export const ProfileContainer = connect(mapStateToProps, { setProfileAC })(ProfileContainerAPI);
+export const ProfileContainer = connect(mapStateToProps, { showProfile: showProfileTC })(ProfileContainerAPI);

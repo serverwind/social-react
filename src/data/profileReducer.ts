@@ -1,3 +1,5 @@
+import { getProfile } from "../api/api";
+
 const initialState = {
   profile: {
     aboutMe: "Frontend Developer",
@@ -16,7 +18,7 @@ const initialState = {
   },
 };
 
-const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET-PROFILE":
       return {
@@ -32,4 +34,15 @@ function setProfileAC(profile) {
   return { type: "SET-PROFILE", profile: profile };
 }
 
-export { profileReducer, setProfileAC };
+// THUNKS
+
+export const showProfileTC = (id: string) => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await getProfile(id);
+      dispatch(setProfileAC(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

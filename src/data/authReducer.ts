@@ -1,3 +1,5 @@
+import { loginUser } from "../api/api";
+
 const initialState = {
   id: null,
   email: null,
@@ -5,7 +7,7 @@ const initialState = {
   isAuth: false,
 };
 
-const authReducer = (state = initialState, action: { type: string; data: any }) => {
+export const authReducer = (state = initialState, action: { type: string; data: any }) => {
   switch (action.type) {
     case "SET-USER-DATA":
       return {
@@ -22,4 +24,17 @@ function setUserDataAC(id: number, email: string, login: string) {
   return { type: "SET-USER-DATA", data: { id, email, login } };
 }
 
-export { authReducer, setUserDataAC };
+// THUNKS
+
+export const loginUserTC = () => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await loginUser();
+      if (response.data.resultCode === 0) {
+        dispatch(setUserDataAC(response.data.data.id, response.data.data.email, response.data.data.login));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

@@ -1,3 +1,5 @@
+import { getUsers, followUser, unfollowUser, getMessengerChats } from "../api/api";
+
 const initialState = {
   users: [],
   currentPage: 1,
@@ -7,7 +9,7 @@ const initialState = {
   inProgress: false,
 };
 
-const usersReducer = (state = initialState, action: { type: string; id: number; users: []; currentPage: number; totalPages: number; isLoading: boolean; inProgress: boolean }) => {
+export const usersReducer = (state = initialState, action: { type: string; id: number; users: []; currentPage: number; totalPages: number; isLoading: boolean; inProgress: boolean }) => {
   switch (action.type) {
     case "ADD-FRIEND":
       return {
@@ -49,6 +51,8 @@ const usersReducer = (state = initialState, action: { type: string; id: number; 
   }
 };
 
+// ACTION CREATORS
+
 function addFriendAC(id: number) {
   return { type: "ADD-FRIEND", id: id };
 }
@@ -57,7 +61,7 @@ function removeFriendAC(id: number) {
   return { type: "REMOVE-FRIEND", id: id };
 }
 
-function setUsersAC(users: []) {
+export function setUsersAC(users: []) {
   return { type: "SET-USERS", users: users };
 }
 
@@ -77,4 +81,73 @@ function setInProgressAC(value: boolean) {
   return { type: "SET-IN-PROGRESS", inProgress: value };
 }
 
-export { usersReducer, addFriendAC, removeFriendAC, setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC, setInProgressAC };
+// THUNKS
+
+export const getUsersTC = (currentPage: number, pageSize: number) => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await getUsers(currentPage, pageSize);
+      dispatch(setUsersAC(response.data.items));
+      dispatch(setTotalPagesAC(response.data.totalCount));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const changePageTC = (pageNumber: number, pageSize: number) => {
+  return async (dispatch: Function) => {
+    dispatch(setIsLoadingAC(true));
+    try {
+      const response = await getUsers(pageNumber, pageSize);
+      dispatch(setCurrentPageAC(pageNumber));
+      dispatch(setUsersAC(response.data.items));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setIsLoadingAC(false));
+    }
+  };
+};
+
+export const followUserTC = (id: number) => {
+  return async (dispatch: Function) => {
+    dispatch(setInProgressAC(true));
+    try {
+      const response = await followUser(id);
+      response.data.resultCode === 0 ? dispatch(addFriendAC(id)) : null;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setInProgressAC(false));
+      dispatch(addFriendAC(id)); //temp, just because API server 403
+    }
+  };
+};
+
+export const unfollowUserTC = (id: number) => {
+  return async (dispatch: Function) => {
+    dispatch(setInProgressAC(true));
+    try {
+      const response = await unfollowUser(id);
+      response.data.resultCode === 0 ? dispatch(removeFriendAC(id)) : null;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setInProgressAC(false));
+      dispatch(removeFriendAC(id)); //temp, just because API server 403
+    }
+  };
+};
+
+export const showChatsTC = () => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await getMessengerChats();
+      dispatch(setUsersAC(response.data.items));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+

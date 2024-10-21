@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import { setUsersAC } from "../../../data/usersReducer";
-import { getMessengerChats } from "../../../api/api";
+import { showChatsTC } from "../../../data/usersReducer";
 
 type StateType = {
   users: {
@@ -22,7 +21,7 @@ function mapStateToProps(state: StateType) {
 }
 
 const actionCreators = {
-  setUsers: setUsersAC,
+  showChats: showChatsTC,
 };
 
 type UsersAPIComponentPropsType = {
@@ -34,20 +33,12 @@ type UsersAPIComponentPropsType = {
       }
     ];
   };
-  setUsers: (users: any) => void;
+  showChats: () => void;
 };
 
 function UsersAPIComponent(props: UsersAPIComponentPropsType) {
   useEffect(() => {
-    async function processMessengerChats() {
-      try {
-        const response = await getMessengerChats();
-        props.setUsers(response.data.items);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    processMessengerChats();
+    props.showChats();
   }, []);
 
   return <Users users={props.users} />;

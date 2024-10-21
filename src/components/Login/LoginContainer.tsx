@@ -1,26 +1,15 @@
 import Login from "./Login";
-import { loginUser } from "../../api/api";
 import { useEffect } from "react";
-import { setUserDataAC } from "../../data/authReducer";
+import { loginUserTC } from "../../data/authReducer";
 import { connect } from "react-redux";
 
 type PropsType = {
-  setUserData: (id: number, email: string, login: string) => void;
+  loginUser: () => void;
 };
 
 function LoginContainerAPI(props: PropsType) {
   useEffect(() => {
-    async function processLoginUser() {
-      try {
-        const response = await loginUser();
-        if (response.data.resultCode === 0) {
-          props.setUserData(response.data.data.id, response.data.data.email, response.data.data.login);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    processLoginUser();
+    props.loginUser();
   }, []);
 
   return (
@@ -49,7 +38,7 @@ const mapStateToProps = (state: StateType) => {
 };
 
 const actionCreators = {
-  setUserData: setUserDataAC,
+  loginUser: loginUserTC,
 };
 
 export const LoginContainer = connect(mapStateToProps, actionCreators)(LoginContainerAPI);

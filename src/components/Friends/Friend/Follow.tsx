@@ -5,13 +5,13 @@ type FollowProps = {
   onAddFriend: () => void;
 };
 
-export default function Follow({ friend, inProgress, onRemoveFriend, onAddFriend }: FollowProps) {
-  return friend ? (
-    <button disabled={inProgress} onClick={onRemoveFriend} className="bg-gray-100 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300">
+export default function Follow(props: FollowProps) {
+  return props.friend ? (
+    <button disabled={props.inProgress} onClick={props.onRemoveFriend} className="bg-gray-100 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300">
       <span className="mgc_user_remove_line"></span>
     </button>
   ) : (
-    <button disabled={inProgress} onClick={onAddFriend} className="bg-gray-200 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300">
+    <button disabled={props.inProgress} onClick={props.onAddFriend} className="bg-gray-200 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300">
       <span className="mgc_user_add_fill"></span>
     </button>
   );

@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { setUsersAC, setCurrentPageAC, setTotalPagesAC, setIsLoadingAC } from "../../data/usersReducer";
 import Friends from "./Friends";
-import { getUsers } from "../../api/api";
+import { getUsersTC, changePageTC } from "../../data/usersReducer";
 
 const actionCreators = {
-  setUsers: setUsersAC,
-  setCurrentPage: setCurrentPageAC,
-  setTotalPages: setTotalPagesAC,
-  setIsLoading: setIsLoadingAC,
+  getUsers: getUsersTC,
+  changePage: changePageTC,
 };
 
 type StateType = {
@@ -21,7 +18,7 @@ type StateType = {
   };
 };
 
-function mapStateToProps({ ...state }: StateType) {
+function mapStateToProps(state: StateType) {
   return {
     users: state.users.users,
     currentPage: state.users.currentPage,
@@ -40,48 +37,19 @@ type FriendsAPIComponentType = {
   setTotalPages: Function;
   setCurrentPage: Function;
   setIsLoading: Function;
+  getUsers: Function;
+  changePage: Function;
   isLoading: boolean;
 };
 
-function FriendsAPIComponent({ ...props }: FriendsAPIComponentType) {
+function FriendsAPIComponent(props: FriendsAPIComponentType) {
   useEffect(() => {
-    async function ProcessUsersData() {
-      try {
-        const response = await getUsers(props.currentPage, props.pageSize);
-        props.setUsers(response.data.items);
-        props.setTotalPages(response.data.totalCount);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    ProcessUsersData();
+    props.getUsers(props.currentPage, props.pageSize);
   }, []);
 
-  useEffect(() => {
-    async function ProcessUsersData() {
-      try {
-        const response = await getUsers(props.currentPage, props.pageSize);
-        props.setUsers(response.data.items);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        props.setIsLoading(false);
-      }
-    }
-    ProcessUsersData();
-  }, []);
 
-  async function onPageChanged(pageNumber: number) {
-    props.setIsLoading(true);
-    try {
-      const response = await getUsers(pageNumber, props.pageSize);
-      props.setCurrentPage(pageNumber);
-      props.setUsers(response.data.items);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      props.setIsLoading(false);
-    }
+  function onPageChanged(pageNumber: number) {
+    props.changePage(pageNumber, props.pageSize);
   }
 
   return (
