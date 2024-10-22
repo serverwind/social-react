@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import Friends from "./Friends";
 import { getUsersTC, changePageTC } from "../../data/usersReducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -60,6 +61,4 @@ function FriendsAPIComponent(props: FriendsAPIComponentType) {
   );
 }
 
-let AuthRedirectComponent = withAuthRedirect(FriendsAPIComponent);
-
-export const FriendsContainer = connect(mapStateToProps, actionCreators)(AuthRedirectComponent);
+export default compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(FriendsAPIComponent);
