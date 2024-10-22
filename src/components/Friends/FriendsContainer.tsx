@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import Friends from "./Friends";
 import { getUsersTC, changePageTC } from "../../data/usersReducer";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 const actionCreators = {
   getUsers: getUsersTC,
@@ -16,9 +17,6 @@ type StateType = {
     totalPages: number;
     isLoading: boolean;
   };
-  auth: {
-    isAuth: boolean;
-  };
 };
 
 function mapStateToProps(state: StateType) {
@@ -28,7 +26,6 @@ function mapStateToProps(state: StateType) {
     pageSize: state.users.pageSize,
     totalPages: state.users.totalPages,
     isLoading: state.users.isLoading,
-    isAuth: state.auth.isAuth,
   };
 }
 
@@ -44,9 +41,7 @@ type FriendsAPIComponentType = {
   getUsers: Function;
   changePage: Function;
   isLoading: boolean;
-  auth: {
-    isAuth: boolean;
-  };
+  isAuth: boolean;
 };
 
 function FriendsAPIComponent(props: FriendsAPIComponentType) {
@@ -60,9 +55,11 @@ function FriendsAPIComponent(props: FriendsAPIComponentType) {
 
   return (
     <section>
-      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} auth={props.isAuth} />
+      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} />
     </section>
   );
 }
 
-export const FriendsContainer = connect(mapStateToProps, actionCreators)(FriendsAPIComponent);
+let AuthRedirectComponent = withAuthRedirect(FriendsAPIComponent);
+
+export const FriendsContainer = connect(mapStateToProps, actionCreators)(AuthRedirectComponent);

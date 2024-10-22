@@ -2,6 +2,7 @@ import Messenger from "./Messenger";
 import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/messengerReducer";
 import { setUsersAC } from "../../data/usersReducer";
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 type StateType = {
   messenger: {
@@ -23,16 +24,12 @@ type StateType = {
       }
     ];
   };
-  auth: {
-    isAuth: boolean;
-  };
 };
 
 const mapStateToProps = (state: StateType) => {
   return {
     messenger: state.messenger,
     users: state.users,
-    auth: state.auth.isAuth,
   };
 };
 
@@ -42,4 +39,6 @@ const actionCreators = {
   setUsers: setUsersAC,
 };
 
-export const MessengerContainer = connect(mapStateToProps, actionCreators)(Messenger);
+let AuthRedirectComponent = withAuthRedirect(Messenger);
+
+export const MessengerContainer = connect(mapStateToProps, actionCreators)(AuthRedirectComponent);
