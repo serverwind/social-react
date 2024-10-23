@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
 type LoginPropsType = {
-  id: number;
-  login: string;
-  isAuth: boolean;
+    login: string;
+    id: number;
+    isAuth: boolean;
 };
 
 export default function Login(props: LoginPropsType) {
