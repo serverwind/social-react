@@ -6,6 +6,7 @@ import { linksReducer } from "./linksReducer";
 import { musicReducer } from "./musicReducer";
 import { profileReducer } from "./profileReducer";
 import { authReducer } from "./authReducer";
+import { settingsReducer } from "./settingsReducer";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     music: musicReducer,
     profile: profileReducer,
     auth: authReducer,
+    settings: settingsReducer,
   },
 });
