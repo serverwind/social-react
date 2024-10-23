@@ -4,7 +4,7 @@ import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import { ProfileContainer } from "./components/Profile/ProfileContainer";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
-import { FriendsContainer } from "./components/Friends/FriendsContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
 import Feed from "./components/Feed/Feed";
 import { MusicContainer } from "./components/Music/MusicContainer";
 import Settings from "./components/Settings/Settings";
@@ -14,7 +14,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 //
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <section>
@@ -40,5 +40,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export { App };

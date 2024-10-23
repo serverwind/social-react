@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App.jsx";
+import App from "./App";
 import { Provider } from "react-redux";
 import "./output.css";
 import "../node_modules/mingcute_icon/font/Mingcute.css";

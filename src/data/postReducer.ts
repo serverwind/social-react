@@ -9,7 +9,7 @@ const initialState = {
   input: { text: "" },
 };
 
-function postReducer(state = initialState, action: { type: string; id: number; post: string; likes: number; author: string; date: string; text: string }) {
+export function postReducer(state = initialState, action: { type: string; id: number; post: string; likes: number; author: string; date: string; text: string }) {
   switch (action.type) {
     case "ADD-POST":
       return {
@@ -31,16 +31,14 @@ function postReducer(state = initialState, action: { type: string; id: number; p
   return state;
 }
 
-function newPostActionCreater(id: number, post: string, likes: number, author: string, date: string) {
+export function newPostActionCreater(id: number, post: string, likes: number, author: string, date: string) {
   return { type: "ADD-POST", id, post, likes, author, date };
 }
 
-function stateTextActionCreator(text: string) {
+export function stateTextActionCreator(text: string) {
   return { type: "CHANGE-TEXT", text };
 }
 
-function likeActionCreator(id: number, likes: number) {
+export function likeActionCreator(id: number, likes: number) {
   return { type: "LIKE", id, likes };
 }
-
-export { postReducer, newPostActionCreater, stateTextActionCreator, likeActionCreator };

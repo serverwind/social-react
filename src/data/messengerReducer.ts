@@ -6,7 +6,7 @@ const initialState = {
   input: { text: "" },
 };
 
-function messengerReducer(state = initialState, action: { type: string; text: string; id: number; message: string }) {
+export function messengerReducer(state = initialState, action: { type: string; text: string; id: number; message: string }) {
   switch (action.type) {
     case "CHANGE-MESSENGER-INPUT":
       return {
@@ -23,12 +23,10 @@ function messengerReducer(state = initialState, action: { type: string; text: st
   return state;
 }
 
-function sendMessageActionCreator(id: number, message: string) {
+export function sendMessageActionCreator(id: number, message: string) {
   return { type: "SEND-MESSAGE", id, message };
 }
 
-function messengerInputActionCreator(text: string) {
+export function messengerInputActionCreator(text: string) {
   return { type: "CHANGE-MESSENGER-INPUT", text };
 }
-
-export { messengerReducer, sendMessageActionCreator, messengerInputActionCreator };
