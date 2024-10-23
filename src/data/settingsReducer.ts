@@ -20,9 +20,9 @@ export const settingsReducer = (state = initialState, action: { type: string; da
 };
 
 export function setLightThemeAC(theme: string) {
-  return { type: "SET-LIGHT-THEME", theme };
+  return { type: "SET-LIGHT-THEME", theme: theme };
 }
 
 export function setDarkThemeAC(theme: string) {
-  return { type: "SET-DARK-THEME", theme };
+  return { type: "SET-DARK-THEME", theme: theme };
 }

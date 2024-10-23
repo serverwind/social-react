@@ -14,6 +14,7 @@ type ProfileContainerPropsType = {
     };
   };
   showProfile: (id: string) => void;
+    theme: string;
 };
 
 type StateType = {
@@ -27,6 +28,9 @@ type StateType = {
       };
     };
   };
+  settings: {
+    theme: string;
+  }
 };
 
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
@@ -38,11 +42,14 @@ function ProfileContainerAPI(props: ProfileContainerPropsType) {
     props.showProfile(userId);
   }, []);
 
-  return <Profile {...props} profile={props.profile} />;
+  return <Profile {...props} profile={props.profile} theme={props.theme} />;
 }
 
 let mapStateToProps = (state: StateType) => {
-  return { profile: state.profile.profile };
+  return { 
+    profile: state.profile.profile,
+    theme: state.settings.theme
+  };
 };
 
 export const ProfileContainer = connect(mapStateToProps, { showProfile: showProfileTC })(ProfileContainerAPI);
