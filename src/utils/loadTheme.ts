@@ -5,7 +5,7 @@ export default function loadTheme(theme) {
       text: "text-black",
     },
     dark: {
-      bg: "bg-gray-800",
+      bg: "bg-black",
       text: "text-white",
     },
   };

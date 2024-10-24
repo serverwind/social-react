@@ -1,6 +1,6 @@
 // COMPONENTS
 import Header from "./components/Header/Header";
-import Navigation from "./components/Navigation/Navigation";
+import { NavigationContainer } from "./components/Navigation/NavigationContainer";
 import Footer from "./components/Footer/Footer";
 import { ProfileContainer } from "./components/Profile/ProfileContainer";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
@@ -20,7 +20,7 @@ export default function App() {
       <section>
         <Header />
         <div className="grid sm:grid-cols-[200px_1fr]">
-          <Navigation />
+          <NavigationContainer />
 
           {/* ROUTING */}
           <Routes>

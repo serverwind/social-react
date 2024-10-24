@@ -3,11 +3,15 @@ type UserInfoProps = {
   job: boolean;
   aboutMe: string;
   website: string;
+  theme: {
+    bg: string;
+    text: string;
+  }
 };
 
 export default function UserInfo(props: UserInfoProps) {
   return (
-    <ul className="text-lg">
+    <ul className={ `text-lg ${props.theme.text}` }>
       <li>
         <span className="mgc_certificate_fill"></span> {props.name}
       </li>

@@ -1,8 +1,8 @@
 import { LinksContainer } from "./Links/LinksContainer";
 
-export default function Navigation() {
+export default function Navigation(props) {
   return (
-    <nav className="bg-gray-300 sm:p-4 sm:relative">
+    <nav className={ `${props.theme.bg} ${props.theme.text} sm:p-4 sm:relative` }>
       <LinksContainer />
     </nav>
   );

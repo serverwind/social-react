@@ -50,9 +50,9 @@ function Music(props: MusicType) {
   }
 
   return (
-    <section className="py-2 px-4">
+    <section className={ `py-2 px-4 ${props.theme.bg} ${props.theme.text}` }>
       <h2>Free No Copyright Relaxing Music</h2>
-      <div className="flex gap-2 items-center mb-4">
+      <div className={ `flex gap-2 items-center mb-4` }>
         <span>{props.music.player.name}</span>
         <span>{props.music.player.artist}</span>
         <span>0:00</span>

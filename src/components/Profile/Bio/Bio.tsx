@@ -3,13 +3,17 @@ import UserInfo from "../UserInfo/UserInfo";
 
 type BioProps = {
   name: string;
+  theme: {
+    bg: string;
+    text: string;
+  }
 };
 
 export default function Bio(props: BioProps) {
   return (
-    <div className="flex gap-4 p-4 items-center bg-gray-200">
+    <div className={ `flex gap-4 p-4 items-center ${props.theme.bg}` }>
       <Photo />
-      <UserInfo name={props.name} />
+      <UserInfo name={props.name} theme={props.theme} />
     </div>
   );
 }

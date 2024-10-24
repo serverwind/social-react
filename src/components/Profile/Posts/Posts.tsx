@@ -5,15 +5,19 @@ type PostsProps = {
   posts: any;
   stateText: (text: string) => void;
   newPost: (id: number, post: string, likes: number, author: string, date: string) => void;
+  theme: {
+    bg: string;
+    text: string;
+  }
 };
 
-export default function Posts({ posts, stateText, newPost }: PostsProps) {
+export default function Posts(props: PostsProps) {
   return (
     <div className="p-4">
-      <h2 className="text-xl mb-4">My posts</h2>
-      <Input posts={posts} stateText={stateText} newPost={newPost} />
+      <h2 className={ `text-xl mb-4 ${props.theme.text}` }>My posts</h2>
+      <Input posts={props.posts} stateText={props.stateText} newPost={props.newPost} theme={props.theme} />
       <div>
-        {posts.posts.map((post: { id: number; post: string; likes: number; author: string; date: string }) => (
+        {props.posts.posts.map((post: { id: number; post: string; likes: number; author: string; date: string }) => (
           <PostContainer id={post.id} key={post.id} post={post.post} likes={post.likes} author={post.author} date={post.date} />
         ))}
       </div>
