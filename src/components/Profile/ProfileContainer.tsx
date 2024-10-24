@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Profile from "./Profile";
 import { showProfileTC } from "../../data/profileReducer";
+import loadTheme from "../../utils/loadTheme";
 
 type ProfileContainerPropsType = {
   profile: {
@@ -14,7 +15,10 @@ type ProfileContainerPropsType = {
     };
   };
   showProfile: (id: string) => void;
-    theme: string;
+  theme: {
+    bg: string;
+    text: string;
+  }
 };
 
 type StateType = {
@@ -42,7 +46,9 @@ function ProfileContainerAPI(props: ProfileContainerPropsType) {
     props.showProfile(userId);
   }, []);
 
-  return <Profile {...props} profile={props.profile} theme={props.theme} />;
+  const theme = loadTheme(props.theme);
+
+  return <Profile {...props} profile={props.profile} theme={theme} />;
 }
 
 let mapStateToProps = (state: StateType) => {
