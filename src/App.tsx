@@ -5,14 +5,12 @@ import Footer from "./components/Footer/Footer";
 import { ProfileContainer } from "./components/Profile/ProfileContainer";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
-import Feed from "./components/Feed/Feed";
+import { FeedContainer } from "./components/Feed/FeedContainer";
 import { MusicContainer } from "./components/Music/MusicContainer";
-import Settings from "./components/Settings/Settings";
+import { SettingsContainer } from "./components/Settings/SettingsContainer";
 
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-
-//
 
 export default function App() {
   return (
@@ -29,9 +27,9 @@ export default function App() {
             <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/messenger/*" element={<MessengerContainer />} />
             <Route path="/friends" element={<FriendsContainer />} />
-            <Route path="/feed" element={<Feed />} />
+            <Route path="/feed" element={<FeedContainer />} />
             <Route path="/music" element={<MusicContainer />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<SettingsContainer />} />
           </Routes>
           {/* ROUTING: END */}
         </div>

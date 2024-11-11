@@ -4,6 +4,7 @@ import { compose } from "redux";
 import Friends from "./Friends";
 import { getUsersTC, changePageTC } from "../../data/usersReducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import loadTheme from "../../utils/loadTheme";
 
 const actionCreators = {
   getUsers: getUsersTC,
@@ -18,6 +19,9 @@ type StateType = {
     totalPages: number;
     isLoading: boolean;
   };
+  settings: {
+    theme: string;
+  };
 };
 
 function mapStateToProps(state: StateType) {
@@ -27,6 +31,7 @@ function mapStateToProps(state: StateType) {
     pageSize: state.users.pageSize,
     totalPages: state.users.totalPages,
     isLoading: state.users.isLoading,
+    theme: state.settings.theme,
   };
 }
 
@@ -43,6 +48,10 @@ type FriendsAPIComponentType = {
   changePage: Function;
   isLoading: boolean;
   isAuth: boolean;
+  theme: {
+    bg: string;
+    text: string;
+  };
 };
 
 function FriendsAPIComponent(props: FriendsAPIComponentType) {
@@ -54,9 +63,11 @@ function FriendsAPIComponent(props: FriendsAPIComponentType) {
     props.changePage(pageNumber, props.pageSize);
   }
 
+  const theme = loadTheme(props.theme);
+
   return (
     <section>
-      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} />
+      <Friends users={props.users} totalPages={props.totalPages} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={onPageChanged} isLoading={props.isLoading} theme={theme} />
     </section>
   );
 }

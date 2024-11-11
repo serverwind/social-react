@@ -11,11 +11,15 @@ type ChatProps = {
       message: string;
     }[];
   };
+  theme: {
+    bg: string;
+    text: string;
+  };
   stateText: (text: string) => void;
   sendMessage: (id: number, text: string) => void;
 };
 
-export default function Chat({ messenger, stateText, sendMessage }: ChatProps) {
+export default function Chat({ messenger, stateText, sendMessage, theme }: ChatProps) {
   let newMessageText = useRef<HTMLInputElement>(null);
 
   function onStateText() {
@@ -31,7 +35,7 @@ export default function Chat({ messenger, stateText, sendMessage }: ChatProps) {
   }
 
   return (
-    <div className="bg-gray-100 p-4">
+    <div className={ `${theme.bg} p-4` }>
       {messenger.messages.map((message: { id: number; message: string }) => (
         <Message id={message.id} message={message.message} />
       ))}

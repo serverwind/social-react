@@ -4,6 +4,7 @@ import { setUsersAC } from "../../data/usersReducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import loadTheme from "../../utils/loadTheme";
 
 type StateType = {
   messenger: {
@@ -25,12 +26,22 @@ type StateType = {
       }
     ];
   };
+  settings: {
+    theme: string;
+  };
 };
+
+function MessengerContainerAPI(props: any) {
+  const theme = loadTheme(props.theme);
+
+  return <Messenger {...props} theme={theme} />;
+}
 
 const mapStateToProps = (state: StateType) => {
   return {
     messenger: state.messenger,
     users: state.users,
+    theme: state.settings.theme,
   };
 };
 
@@ -40,7 +51,4 @@ const actionCreators = {
   setUsers: setUsersAC,
 };
 
-export const MessengerContainer = compose (
-  connect(mapStateToProps, actionCreators),
-  withAuthRedirect
-)(Messenger)
+export const MessengerContainer = compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MessengerContainerAPI);

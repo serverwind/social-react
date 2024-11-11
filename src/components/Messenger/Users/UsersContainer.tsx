@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
 import { showChatsTC } from "../../../data/usersReducer";
+import loadTheme from "../../../utils/loadTheme";
 
 type StateType = {
   users: {
@@ -12,11 +13,15 @@ type StateType = {
       }
     ];
   };
+  settings: {
+    theme: string;
+  };
 };
 
 function mapStateToProps(state: StateType) {
   return {
     users: state.users,
+    theme: state.settings.theme,
   };
 }
 
@@ -33,6 +38,10 @@ type UsersAPIComponentPropsType = {
       }
     ];
   };
+  theme: {
+    bg: string;
+    text: string;
+  };
   showChats: () => void;
 };
 
@@ -41,7 +50,9 @@ function UsersAPIComponent(props: UsersAPIComponentPropsType) {
     props.showChats();
   }, []);
 
-  return <Users users={props.users} />;
+  const theme = loadTheme(props.theme);
+
+  return <Users users={props.users} theme={theme} />;
 }
 
 export const UsersContainer = connect(mapStateToProps, actionCreators)(UsersAPIComponent);
