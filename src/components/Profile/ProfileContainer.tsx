@@ -18,7 +18,7 @@ type ProfileContainerPropsType = {
   theme: {
     bg: string;
     text: string;
-  }
+  };
 };
 
 type StateType = {
@@ -26,7 +26,7 @@ type StateType = {
     profile: {
       fullName: string;
       lookingForAJob: boolean;
-      aboutMe: string;
+      status: string;
       contacts: {
         website: string;
       };
@@ -34,7 +34,7 @@ type StateType = {
   };
   settings: {
     theme: string;
-  }
+  };
 };
 
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
@@ -52,9 +52,9 @@ function ProfileContainerAPI(props: ProfileContainerPropsType) {
 }
 
 let mapStateToProps = (state: StateType) => {
-  return { 
+  return {
     profile: state.profile.profile,
-    theme: state.settings.theme
+    theme: state.settings.theme,
   };
 };
 

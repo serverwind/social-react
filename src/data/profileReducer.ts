@@ -16,6 +16,10 @@ const initialState = {
       large: "",
     },
   },
+  status: {
+    status: "My status",
+    input: "My status",
+  },
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -25,6 +29,16 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile,
       };
+    case "CHANGE-STATUS-INPUT":
+      return {
+        ...state,
+        status: { ...state.status, input: action.status },
+      };
+    case "STATUS":
+      return {
+        ...state,
+        status: { ...state.status, status: action.status },
+      };
     default:
       return state;
   }
@@ -32,6 +46,13 @@ export const profileReducer = (state = initialState, action) => {
 
 function setProfileAC(profile) {
   return { type: "SET-PROFILE", profile: profile };
+}
+export function changeStatusTextAC(status: string) {
+  return { type: "CHANGE-STATUS-INPUT", status };
+}
+
+export function setStatusAC(status: string) {
+  return { type: "STATUS", status };
 }
 
 // THUNKS

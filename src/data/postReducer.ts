@@ -9,7 +9,7 @@ const initialState = {
   input: { text: "" },
 };
 
-export function postReducer(state = initialState, action: { type: string; id: number; post: string; likes: number; author: string; date: string; text: string }) {
+export function postReducer(state = initialState, action: { type: string; id: number; post: string; likes: number; author: string; date: string; text: string; status: string }) {
   switch (action.type) {
     case "ADD-POST":
       return {

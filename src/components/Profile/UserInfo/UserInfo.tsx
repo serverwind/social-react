@@ -1,3 +1,5 @@
+import StatusContainer from "../Status/StatusContainer";
+
 type UserInfoProps = {
   name: string;
   job: boolean;
@@ -6,14 +8,17 @@ type UserInfoProps = {
   theme: {
     bg: string;
     text: string;
-  }
+  };
 };
 
 export default function UserInfo(props: UserInfoProps) {
   return (
-    <ul className={ `text-lg ${props.theme.text}` }>
+    <ul className={`text-lg ${props.theme.text}`}>
       <li>
         <span className="mgc_certificate_fill"></span> {props.name}
+      </li>
+      <li>
+        <StatusContainer />
       </li>
       <li>
         <span className="mgc_celebrate_fill"></span> {props.job ? "Looking for a job" : "Not looking for a job"}
