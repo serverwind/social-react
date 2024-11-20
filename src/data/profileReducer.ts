@@ -1,4 +1,4 @@
-import { getProfile } from "../api/api";
+import { getProfile, getStatus } from "../api/api";
 
 const initialState = {
   profile: {
@@ -67,3 +67,15 @@ export const showProfileTC = (id: string) => {
     }
   };
 };
+
+export const showStatusTC = (id: number) => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await getStatus(id);
+      debugger
+      dispatch(setStatusAC(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

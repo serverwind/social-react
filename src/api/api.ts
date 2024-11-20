@@ -2,14 +2,14 @@ import axios from "axios";
 
 const instanceFull = axios.create({
   withCredentials: true,
-  baseURL: "https://social-network.samuraijs.com/api/1.0/",
+  baseURL: "https://social-network.samuraijs.com/api/1.0",
   headers: {
-    "API-KEY": "0261e173-fc5b-4bb7-9d2e-12b446daff16",
+    "API-KEY": "00b8385c-3869-4d47-bd40-ee469396a009",
   },
 });
 
 const instanceBase = axios.create({
-  baseURL: "https://social-network.samuraijs.com/api/1.0/",
+  baseURL: "https://social-network.samuraijs.com/api/1.0",
 });
 
 function getUsers(currentPage: number, pageSize: number) {
@@ -36,4 +36,8 @@ function getProfile(id: string) {
   return instanceBase.get(`/profile/${id}`);
 }
 
-export { getUsers, followUser, unfollowUser, loginUser, getMessengerChats, getProfile };
+function getStatus(id: string) {
+  return instanceBase.get(`/profile/status/${id}`);
+}
+
+export { getUsers, followUser, unfollowUser, loginUser, getMessengerChats, getProfile, getStatus };

@@ -40,7 +40,7 @@ type StateType = {
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
   // get userId params to render data of opened profile
   const userIdPara = useParams();
-  let userId = String(userIdPara.userId);
+  let userId = userIdPara.userId || 2; // if undefined set 2
 
   useEffect(() => {
     props.showProfile(userId);
