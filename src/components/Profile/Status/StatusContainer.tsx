@@ -1,6 +1,6 @@
 import Status from "./Status";
 import { connect } from "react-redux";
-import { setStatusAC, changeStatusTextAC } from "../../../data/profileReducer";
+import { setStatusAC, changeStatusTextAC, updateStatusTC } from "../../../data/profileReducer";
 import { showStatusTC } from "../../../data/profileReducer";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -13,17 +13,18 @@ type StatusContainerProps = {
   setStatus: () => void;
   changeText: () => void;
   showStatus: (id: number) => void
+  updateStatus: () => void
 };
 
 function StatusContainer(props: StatusContainerProps) {
   const userIdPara = useParams();
-  let userId = userIdPara.userId || 2; // if undefined set 2
+  let userId = userIdPara.userId || 31894; // if undefined set my profile
 
   useEffect(() => {
     props.showStatus(userId);
-  })
+  }, [userId]);
 
-  return <Status status={props.status} setStatus={props.setStatus} changeText={props.changeText} />;
+  return <Status status={props.status} setStatus={props.setStatus} changeText={props.changeText} updateStatus={props.updateStatus} />;
 }
 
 type StateType = {
@@ -41,7 +42,8 @@ const mapStateToProps = (state: StateType) => {
 let mapDispatchToProps = {
   setStatus: setStatusAC,
   changeText: changeStatusTextAC,
-  showStatus: showStatusTC
+  showStatus: showStatusTC,
+  updateStatus: updateStatusTC
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatusContainer);

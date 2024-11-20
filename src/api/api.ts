@@ -40,4 +40,8 @@ function getStatus(id: string) {
   return instanceBase.get(`/profile/status/${id}`);
 }
 
-export { getUsers, followUser, unfollowUser, loginUser, getMessengerChats, getProfile, getStatus };
+function updateStatus(status: string) {
+  return instanceFull.put(`/profile/status`, { status });
+}
+
+export { getUsers, followUser, unfollowUser, loginUser, getMessengerChats, getProfile, getStatus, updateStatus };

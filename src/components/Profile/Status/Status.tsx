@@ -7,6 +7,7 @@ type StatusProps = {
   };
   setStatus: (text: string) => void;
   changeText: (text: string) => void;
+  updateStatus: (text: string) => void;
 };
 
 export default function Status(props : StatusProps) {
@@ -18,7 +19,7 @@ export default function Status(props : StatusProps) {
 
   function onSave() {
     setEdit(false);
-    props.setStatus(props.status.input);
+    props.updateStatus(props.status.input);
   }
 
   let newStatusText = useRef<HTMLInputElement>(null);

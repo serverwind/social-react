@@ -40,11 +40,11 @@ type StateType = {
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
   // get userId params to render data of opened profile
   const userIdPara = useParams();
-  let userId = userIdPara.userId || 2; // if undefined set 2
+  let userId = userIdPara.userId || 31894; // if undefined set my profile
 
   useEffect(() => {
     props.showProfile(userId);
-  }, []);
+  }, [userId]);
 
   const theme = loadTheme(props.theme);
 
