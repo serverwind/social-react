@@ -13,8 +13,9 @@ type PostProps = {
 
 export default function Post(props: PostProps) {
   function setLike() {
-    props.likes++;
-    props.like(props.id, props.likes);
+    let likes = props.likes;
+    likes++;
+    props.like(props.id, likes);
   }
 
   return (
