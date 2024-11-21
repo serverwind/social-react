@@ -8,6 +8,7 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import { FeedContainer } from "./components/Feed/FeedContainer";
 import { MusicContainer } from "./components/Music/MusicContainer";
 import { SettingsContainer } from "./components/Settings/SettingsContainer";
+import { Login } from "./components/Login/Login";
 
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";
@@ -30,8 +31,10 @@ export default function App() {
             <Route path="/feed" element={<FeedContainer />} />
             <Route path="/music" element={<MusicContainer />} />
             <Route path="/settings" element={<SettingsContainer />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           {/* ROUTING: END */}
+
         </div>
         <Footer />
       </section>
