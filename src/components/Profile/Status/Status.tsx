@@ -34,7 +34,7 @@ export default function Status(props : StatusProps) {
   return (
     <div className="flex gap-1 items-center">
       <span className="mgc_celebrate_fill"></span>  
-      {edit ? <input onBlur={onSave} ref={newStatusText} onChange={onStateText} autoFocus type="text" value={props.status.input} /> : <span onClick={onEdit}>{props.status.status}</span>}
+      {edit ? <input onBlur={onSave} ref={newStatusText} onChange={onStateText} autoFocus type="text" value={props.status.input} /> : <span onClick={onEdit}>{props.status.status ? props.status.status : "Click here to add your status"}</span>}
     </div>
   );
 }
