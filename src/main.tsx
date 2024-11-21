@@ -20,3 +20,6 @@ function render() {
   );
 }
 render();
+
+// for development purposes
+window.store = store;

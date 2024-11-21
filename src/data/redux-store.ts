@@ -7,6 +7,7 @@ import { musicReducer } from "./musicReducer";
 import { profileReducer } from "./profileReducer";
 import { authReducer } from "./authReducer";
 import { settingsReducer } from "./settingsReducer";
+import { reducer as formReducer } from "redux-form";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     profile: profileReducer,
     auth: authReducer,
     settings: settingsReducer,
+    form: formReducer,
   },
 });
