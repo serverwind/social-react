@@ -1,5 +1,5 @@
 import Messenger from "./Messenger";
-import { messengerInputActionCreator, sendMessageActionCreator } from "../../data/messengerReducer";
+import { sendMessageActionCreator } from "../../data/messengerReducer";
 import { setUsersAC } from "../../data/usersReducer";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -46,7 +46,6 @@ const mapStateToProps = (state: StateType) => {
 };
 
 const actionCreators = {
-  stateText: messengerInputActionCreator,
   sendMessage: sendMessageActionCreator,
   setUsers: setUsersAC,
 };

@@ -18,7 +18,6 @@ const initialState = {
   },
   status: {
     status: "My status",
-    input: "My status",
   },
 };
 
