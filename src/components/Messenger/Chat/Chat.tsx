@@ -1,5 +1,7 @@
 import { reduxForm, Field } from "redux-form";
 import Message from "./Message/Message";
+import { requiredField, maxLengthCreator, minLengthCreator } from "../../../utils/validators";
+import FormsControl from "../../common/FormsControl";
 
 type ChatProps = {
   messenger: {
@@ -21,7 +23,7 @@ type ChatProps = {
 function ChatForm(props) {
   return (
     <form onSubmit={props.handleSubmit} className="flex gap-2 my-4">
-      <Field component="input" className="border border-gray-300 p-2 w-full lg:w-2/5" type="text" name="text" />
+      <Field component={FormsControl} validate={[requiredField, maxLengthCreator(10), minLengthCreator(2)]} className="border border-gray-300 p-2 w-full" type="text" name="text" />
       <button onClick={props.onSendMessage} className="border bg-gray-300">
         <span className="mgc_send_fill py-2 px-4"></span>
       </button>
