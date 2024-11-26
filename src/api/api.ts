@@ -12,6 +12,10 @@ const instanceBase = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0",
 });
 
+function getFeed() {
+  return axios.get("https://api.unsplash.com/photos/?client_id=Ni9Jsf3sHn3sxhbQ6aGKF8E21PUtn-oJ5A8ai3SDzrg");
+}
+
 function getUsers(currentPage: number, pageSize: number) {
   return instanceFull.get(`/users/?page=${currentPage}&count=${pageSize}`);
 }
@@ -52,4 +56,4 @@ function updateStatus(status: string) {
   return instanceFull.put(`/profile/status`, { status });
 }
 
-export { getUsers, followUser, unfollowUser, authUser, loginUser, logoutUser, getMessengerChats, getProfile, getStatus, updateStatus };
+export { getUsers, followUser, unfollowUser, authUser, loginUser, logoutUser, getMessengerChats, getProfile, getStatus, updateStatus, getFeed };
