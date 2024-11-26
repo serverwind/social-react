@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Profile from "./Profile";
 import { showProfileTC } from "../../data/profileReducer";
 import loadTheme from "../../utils/loadTheme";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 type ProfileContainerPropsType = {
   profile: {
@@ -58,4 +60,4 @@ let mapStateToProps = (state: StateType) => {
   };
 };
 
-export const ProfileContainer = connect(mapStateToProps, { showProfile: showProfileTC })(ProfileContainerAPI);
+export const ProfileContainer = compose(connect(mapStateToProps, {showProfile: showProfileTC}), withAuthRedirect)(ProfileContainerAPI);

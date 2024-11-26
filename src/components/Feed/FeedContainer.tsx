@@ -1,6 +1,8 @@
 import Feed from "./Feed";
 import { connect } from "react-redux";
 import loadTheme from "../../utils/loadTheme";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 type FeedContainerProps = {
   theme: string;
@@ -24,4 +26,4 @@ const mapStateToProps = (state: StateType) => {
   };
 };
 
-export const FeedContainer = connect(mapStateToProps, null)(FeedContainerAPI);
+export const FeedContainer = compose(connect(mapStateToProps, null), withAuthRedirect)(FeedContainerAPI);

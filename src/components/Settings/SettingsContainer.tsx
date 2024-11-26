@@ -1,6 +1,8 @@
 import Settings from "./Settings";
 import { connect } from "react-redux";
 import loadTheme from "../../utils/loadTheme";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 type SettingsContainerProps = {
   theme: string;
@@ -24,4 +26,4 @@ const mapStateToProps = (state: StateType) => {
   };
 };
 
-export const SettingsContainer = connect(mapStateToProps, null)(SettingsContainerAPI);
+export const SettingsContainer = compose(connect(mapStateToProps, null), withAuthRedirect)(SettingsContainerAPI);

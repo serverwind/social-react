@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import { setTrackAC } from "../../data/musicReducer";
 import { Music } from "./Music";
 import loadTheme from "../../utils/loadTheme";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 function mapStateToProps(state) {
   return {
@@ -19,4 +21,4 @@ function MusicContainerAPI(props) {
   return <Music {...props} theme={theme} />;
 }
 
-export const MusicContainer = connect(mapStateToProps, actionCreators)(MusicContainerAPI);
+export const MusicContainer = compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MusicContainerAPI);
