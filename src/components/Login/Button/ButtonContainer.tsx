@@ -1,15 +1,16 @@
 import Button from "./Button";
 import { useEffect } from "react";
-import { loginUserTC } from "../../../data/authReducer";
+import { setUserTC, logoutUserTC } from "../../../data/authReducer";
 import { connect } from "react-redux";
 
 type PropsType = {
-  loginUser: () => void;
+  setUser: () => void;
+  logout: () => void;
 };
 
 function LoginContainerAPI(props: PropsType) {
   useEffect(() => {
-    props.loginUser();
+    props.setUser();
   }, []);
 
   return (
@@ -21,24 +22,19 @@ function LoginContainerAPI(props: PropsType) {
 
 type StateType = {
   auth: {
-    login: string;
-    id: number;
-    email: string;
     isAuth: boolean;
   };
 };
 
 const mapStateToProps = (state: StateType) => {
   return {
-    login: state.auth.login,
-    id: state.auth.id,
-    email: state.auth.email,
     isAuth: state.auth.isAuth,
   };
 };
 
 const actionCreators = {
-  loginUser: loginUserTC,
+  setUser: setUserTC,
+  logout: logoutUserTC,
 };
 
 export const LoginContainer = connect(mapStateToProps, actionCreators)(LoginContainerAPI);

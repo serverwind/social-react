@@ -8,7 +8,7 @@ import FriendsContainer from "./components/Friends/FriendsContainer";
 import { FeedContainer } from "./components/Feed/FeedContainer";
 import { MusicContainer } from "./components/Music/MusicContainer";
 import { SettingsContainer } from "./components/Settings/SettingsContainer";
-import { Login } from "./components/Login/Login";
+import Login from "./components/Login/Login";
 
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { loginUser } from "../api/api";
+import { authUser, loginUser, logoutUser } from "../api/api";
 
 const initialState = {
   id: null,
@@ -13,25 +13,50 @@ export const authReducer = (state = initialState, action: { type: string; data: 
       return {
         ...state,
         ...action.data,
-        isAuth: true,
       };
     default:
       return state;
   }
 };
 
-function setUserDataAC(id: number, email: string, login: string) {
-  return { type: "SET-USER-DATA", data: { id, email, login } };
+function setUserDataAC(id, email, login, isAuth) {
+  return { type: "SET-USER-DATA", data: { id, email, login, isAuth } };
 }
 
 // THUNKS
 
-export const loginUserTC = () => {
+export const setUserTC = () => {
   return async (dispatch: Function) => {
     try {
-      const response = await loginUser();
+      const response = await authUser();
       if (response.data.resultCode === 0) {
-        dispatch(setUserDataAC(response.data.data.id, response.data.data.email, response.data.data.login));
+        dispatch(setUserDataAC(response.data.data.id, response.data.data.email, response.data.data.login, true));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const loginUserTC = (email, password, rememberMe) => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await loginUser( email, password, rememberMe );
+      if (response.data.resultCode === 0) {
+        dispatch(setUserTC());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const logoutUserTC = () => {
+  return async (dispatch: Function) => {
+    try {
+      const response = await logoutUser();
+      if (response.data.resultCode === 0) {
+        dispatch(setUserDataAC( null, null, null, false ));
       }
     } catch (error) {
       console.log(error);

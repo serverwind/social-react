@@ -1,18 +1,23 @@
 import { reduxForm, Field } from 'redux-form';
+import { requiredField, maxLengthCreator, minLengthCreator } from "../../utils/validators";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { loginUserTC } from "../../data/authReducer";
+import FormsControl from "../../components/common/FormsControl";
 
 function LoginForm(props) {
   return (
       <form onSubmit={props.handleSubmit} className="flex flex-col gap-4">
         <label className="flex gap-2">
-          <span>Username</span>
-          <Field component="input" type="text" name="username" className="border border-gray-300" />
+          <span>E-mail</span>
+          <Field component={FormsControl} validate={[requiredField, maxLengthCreator(30), minLengthCreator(2)]} type="text" name="email" className="border border-gray-300" />
         </label>
         <label className="flex gap-3">
           <span>Password</span>
-          <Field component="input" type="password" name="password" className="border border-gray-300" />
+          <Field component={FormsControl} validate={[requiredField, maxLengthCreator(10), minLengthCreator(2)]} type="password" name="password" className="border border-gray-300" />
         </label>
         <label className="flex gap-1">
-          <Field component="input" type="checkbox" name="remember" />
+          <Field component="input" type="checkbox" name="rememberMe" />
           <span>Remember me</span>
         </label>
         <button className="bg-gray-200 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300 w-1/4" type="submit">Login</button>
@@ -22,10 +27,13 @@ function LoginForm(props) {
 
 const ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm);
 
-export function Login() {
+function Login(props) {
   const onSubmit = (formData) => {
-    //here we got all form data!
-    console.log(formData);
+    props.loginUserTC(formData.email, formData.password, formData.rememberMe);
+  }
+
+  if (props.isAuth) {
+    return <Navigate replace to={`/profile`} />
   }
 
   return (
@@ -35,3 +43,9 @@ export function Login() {
     </section>
   );
 }
+
+let mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {loginUserTC})(Login);

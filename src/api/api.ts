@@ -24,8 +24,16 @@ function unfollowUser(id: number) {
   return instanceFull.delete(`/follow/${id}`);
 }
 
-function loginUser() {
+function authUser() {
   return instanceFull.get("/auth/me");
+}
+
+function loginUser(email: string, password: string, rememberMe: boolean = false) {
+  return instanceFull.post("/auth/login", { email, password, rememberMe });
+}
+
+function logoutUser() {
+  return instanceFull.delete("/auth/login");
 }
 
 function getMessengerChats() {
@@ -44,4 +52,4 @@ function updateStatus(status: string) {
   return instanceFull.put(`/profile/status`, { status });
 }
 
-export { getUsers, followUser, unfollowUser, loginUser, getMessengerChats, getProfile, getStatus, updateStatus };
+export { getUsers, followUser, unfollowUser, authUser, loginUser, logoutUser, getMessengerChats, getProfile, getStatus, updateStatus };
