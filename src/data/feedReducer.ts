@@ -9,14 +9,14 @@ export const feedReducer = (state = initialState, action) => {
     case "SET-PHOTOS":
       return {
         ...state,
-        ...action.data,
+        photos: action.data,
       };
     default:
       return state;
   }
 };
 
-function setPhotosAC(data : Array<Object>) {
+function setPhotosAC(data: Array<Object>) {
   return { type: "SET-PHOTOS", data };
 }
 
