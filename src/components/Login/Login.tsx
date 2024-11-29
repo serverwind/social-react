@@ -21,6 +21,7 @@ function LoginForm(props) {
           <span>Remember me</span>
         </label>
         <button className="bg-gray-200 text-sm py-2 px-4 hover:bg-gray-300 transition duration-300 w-1/4" type="submit">Login</button>
+        { props.error ? <div>{props.error}</div> : null }
       </form>
   )
 }

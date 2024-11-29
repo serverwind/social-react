@@ -1,4 +1,5 @@
 import { authUser, loginUser, logoutUser } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const initialState = {
   id: null,
@@ -44,6 +45,9 @@ export const loginUserTC = (email, password, rememberMe) => {
       const response = await loginUser( email, password, rememberMe );
       if (response.data.resultCode === 0) {
         dispatch(setUserTC());
+      } else {
+        let action = stopSubmit("login", { _error: response.data.messages[0] });
+        dispatch(action);
       }
     } catch (error) {
       console.log(error);
