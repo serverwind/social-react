@@ -1,4 +1,3 @@
-// COMPONENTS
 import Header from "./components/Header/Header";
 import { NavigationContainer } from "./components/Navigation/NavigationContainer";
 import Footer from "./components/Footer/Footer";
@@ -11,13 +10,10 @@ import { SettingsContainer } from "./components/Settings/SettingsContainer";
 import Login from "./components/Login/Login";
 import Loader from "./components/Loader/Loader";
 
-// LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { initApp } from "./data/appReducer"
-
-// ELSE
+import { initApp } from "./data/appReducer";
 
 function App(props) {
   useEffect(() => {
@@ -35,7 +31,6 @@ function App(props) {
         <div className="grid sm:grid-cols-[200px_1fr]">
           <NavigationContainer />
 
-          {/* ROUTING */}
           <Routes>
             <Route path="/" element={<ProfileContainer />} />
             <Route path="/profile/:userId" element={<ProfileContainer />} />
@@ -47,8 +42,6 @@ function App(props) {
             <Route path="/settings" element={<SettingsContainer />} />
             <Route path="/login" element={<Login />} />
           </Routes>
-          {/* ROUTING: END */}
-
         </div>
         <Footer />
       </section>
@@ -56,10 +49,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => (
-  {
-    init: state.app.init
-  }
-)
+const mapStateToProps = (state) => ({
+  init: state.app.init,
+});
 
 export default connect(mapStateToProps, { initApp })(App);
