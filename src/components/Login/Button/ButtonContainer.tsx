@@ -1,17 +1,12 @@
 import Button from "./Button";
-import { useEffect } from "react";
-import { setUserTC, logoutUserTC } from "../../../data/authReducer";
+import { logoutUserTC } from "../../../data/authReducer";
 import { connect } from "react-redux";
 
 type PropsType = {
-  setUser: () => void;
   logout: () => void;
 };
 
 function LoginContainerAPI(props: PropsType) {
-  useEffect(() => {
-    props.setUser();
-  }, []);
 
   return (
     <div>
@@ -33,7 +28,6 @@ const mapStateToProps = (state: StateType) => {
 };
 
 const actionCreators = {
-  setUser: setUserTC,
   logout: logoutUserTC,
 };
 

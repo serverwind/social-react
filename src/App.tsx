@@ -9,11 +9,25 @@ import { FeedContainer } from "./components/Feed/FeedContainer";
 import { MusicContainer } from "./components/Music/MusicContainer";
 import { SettingsContainer } from "./components/Settings/SettingsContainer";
 import Login from "./components/Login/Login";
+import Loader from "./components/Loader/Loader";
 
 // LIBS
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { initApp } from "./data/appReducer"
 
-export default function App() {
+// ELSE
+
+function App(props) {
+  useEffect(() => {
+    props.initApp();
+  }, []);
+
+  if (!props.init) {
+    return <Loader />;
+  }
+
   return (
     <BrowserRouter>
       <section>
@@ -41,3 +55,11 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+const mapStateToProps = (state) => (
+  {
+    init: state.app.init
+  }
+)
+
+export default connect(mapStateToProps, { initApp })(App);

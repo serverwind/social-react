@@ -8,10 +8,12 @@ import { profileReducer } from "./profileReducer";
 import { authReducer } from "./authReducer";
 import { settingsReducer } from "./settingsReducer";
 import { feedReducer } from "./feedReducer";
+import { appReducer } from "./appReducer";
 import { reducer as formReducer } from "redux-form";
 
 export const store = configureStore({
   reducer: {
+    app: appReducer,
     posts: postReducer,
     messenger: messengerReducer,
     users: usersReducer,
