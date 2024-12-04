@@ -562,14 +562,6 @@ video {
   position: relative;
 }
 
-.right-0 {
-  right: 0px;
-}
-
-.top-0 {
-  top: 0px;
-}
-
 .right-1 {
   right: 0.25rem;
 }
@@ -595,6 +587,14 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .block {
@@ -641,12 +641,24 @@ video {
   width: 100%;
 }
 
+.w-72 {
+  width: 18rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.grid-cols-\[1fr_auto\] {
+  grid-template-columns: 1fr auto;
 }
 
 .flex-col {
@@ -685,6 +697,10 @@ video {
   gap: 1rem;
 }
 
+.justify-self-end {
+  justify-self: end;
+}
+
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -701,10 +717,6 @@ video {
   border-width: 1px;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -718,29 +730,14 @@ video {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
-.border-red-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
 .border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
 
-.border-gray-900 {
+.border-white {
   --tw-border-opacity: 1;
-  border-color: rgb(17 24 39 / var(--tw-border-opacity));
-}
-
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -820,6 +817,10 @@ video {
   text-align: center;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -867,6 +868,11 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
@@ -875,11 +881,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .transition {
@@ -947,7 +948,11 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:w-2\/5 {
-    width: 40%;
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
+  .lg\:max-w-lg {
+    max-width: 32rem;
   }
 }

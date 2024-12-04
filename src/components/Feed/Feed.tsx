@@ -12,9 +12,8 @@ type FeedProps = {
 };
 
 export default function Feed(props: FeedProps) {
-  debugger;
   return (
-    <div className={`${props.theme.bg} ${props.theme.text} p-4`}>
+    <div className={`${props.theme.bg} ${props.theme.text} p-4 flex flex-col justify-center items-center`}>
       {props.feed.photos.map((photo: { urls: { regular: string }; alt_description: string; likes: number; created_at: string; id: number }) => (
         <Post src={photo.urls.regular} desc={photo.alt_description} likes={photo.likes} date={photo.created_at} key={photo.id} />
       ))}
