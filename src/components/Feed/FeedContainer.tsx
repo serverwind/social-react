@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Feed from "./Feed";
 import { connect } from "react-redux";
 import loadTheme from "../../utils/loadTheme";
@@ -15,7 +16,10 @@ type FeedContainerProps = {
 
 function FeedContainerAPI(props: FeedContainerProps) {
   const theme = loadTheme(props.theme);
-  props.setPhotos();
+
+  useEffect(() => {
+    props.setPhotos();
+  }, []);
 
   return <Feed theme={theme} feed={props.feed} />;
 }

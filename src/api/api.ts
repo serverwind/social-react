@@ -13,7 +13,7 @@ const instanceBase = axios.create({
 });
 
 function getFeed() {
-  return axios.get("https://api.unsplash.com/photos/?client_id=Ni9Jsf3sHn3sxhbQ6aGKF8E21PUtn-oJ5A8ai3SDzrg");
+  return axios.get("https://api.unsplash.com/photos?page=1&client_id=Ni9Jsf3sHn3sxhbQ6aGKF8E21PUtn-oJ5A8ai3SDzrg");
 }
 
 function getUsers(currentPage: number, pageSize: number) {
