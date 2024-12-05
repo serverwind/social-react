@@ -2,6 +2,7 @@ import { getFeed } from "../api/api";
 
 const initialState = {
   photos: [],
+  page: 1
 };
 
 export const feedReducer = (state = initialState, action) => {
@@ -9,7 +10,7 @@ export const feedReducer = (state = initialState, action) => {
     case "SET-PHOTOS":
       return {
         ...state,
-        photos: action.data,
+        photos: [...state.photos, ...action.data],
       };
     default:
       return state;
@@ -20,12 +21,10 @@ function setPhotosAC(data: Array<Object>) {
   return { type: "SET-PHOTOS", data };
 }
 
-// THUNKS
-
-export const setPhotosTC = () => {
+export const setPhotosTC = (page) => {
   return async (dispatch: Function) => {
     try {
-      const response = await getFeed();
+      const response = await getFeed(page);
       if (response.data) {
         dispatch(setPhotosAC(response.data));
       }

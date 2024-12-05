@@ -21,7 +21,7 @@ type ProfileContainerPropsType = {
     bg: string;
     text: string;
   };
-  userId: string
+  userId: string;
 };
 
 type StateType = {
@@ -39,12 +39,11 @@ type StateType = {
     theme: string;
   };
   auth: {
-    userId: string
-  }
+    userId: string;
+  };
 };
 
 function ProfileContainerAPI(props: ProfileContainerPropsType) {
-  // get userId params to render data of opened profile
   const userIdPara = useParams();
   let userId = userIdPara.userId || props.userId;
 
@@ -61,8 +60,8 @@ let mapStateToProps = (state: StateType) => {
   return {
     profile: state.profile.profile,
     theme: state.settings.theme,
-    userId: state.auth.userId
+    userId: state.auth.userId,
   };
 };
 
-export const ProfileContainer = compose(connect(mapStateToProps, {showProfile: showProfileTC}), withAuthRedirect)(ProfileContainerAPI);
+export const ProfileContainer = compose(connect(mapStateToProps, { showProfile: showProfileTC }), withAuthRedirect)(ProfileContainerAPI);

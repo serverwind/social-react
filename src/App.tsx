@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import { ProfileContainer } from "./components/Profile/ProfileContainer";
 import { MessengerContainer } from "./components/Messenger/MessengerContainer";
 import FriendsContainer from "./components/Friends/FriendsContainer";
-import { FeedContainer } from "./components/Feed/FeedContainer";
+import FeedContainer from "./components/Feed/FeedContainer";
 import { MusicContainer } from "./components/Music/MusicContainer";
 import { SettingsContainer } from "./components/Settings/SettingsContainer";
 import Login from "./components/Login/Login";

@@ -16,7 +16,6 @@ export default function Post(props: PostProps) {
     let likes = props.likes;
     ++likes;
     props.like(props.id, likes);
-    debugger
   }
 
   return (

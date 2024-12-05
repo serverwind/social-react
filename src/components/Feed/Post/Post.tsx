@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Post(props) {
   return (
-    <div className="mb-8 flex flex-col justify-center">
+    <div className="mb-8 flex flex-col justify-center" key={props.id}>
       <div className="flex justify-center h-64 w-full">
         <LazyLoadImage className="rounded object-cover w-full h-full" src={props.src} placeholderSrc={PlaceholderImage} alt={props.desc} />
       </div>
