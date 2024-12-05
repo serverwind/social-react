@@ -50,7 +50,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  init: state.app.init,
+  init: state.app.initApp,
 });
 
 export default connect(mapStateToProps, { initApp })(App);
