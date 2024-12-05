@@ -1,8 +1,11 @@
+import PlaceholderImage from "../../../assets/img/placeholder.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 export default function Post(props) {
   return (
-    <div className="mb-8 flex flex-col justify-center lg:max-w-lg">
-      <div className="flex justify-center">
-        <img className="rounded" src={props.src} />
+    <div className="mb-8 flex flex-col justify-center">
+      <div className="flex justify-center h-64 w-full">
+        <LazyLoadImage className="rounded object-cover w-full h-full" src={props.src} placeholderSrc={PlaceholderImage} alt={props.desc} />
       </div>
       <div className="italic grid grid-cols-[1fr_auto] gap-1 text-sm py-2">
         <span>{props.desc}</span>
