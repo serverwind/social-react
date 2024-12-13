@@ -10,18 +10,18 @@ export const feedReducer = (state = initialState, action) => {
     case "SET-PHOTOS":
       return {
         ...state,
-        photos: [...state.photos, ...action.data],
+        photos: [...state.photos, ...action.photos],
       };
     default:
       return state;
   }
 };
 
-function setPhotosAC(data: Array<Object>) {
-  return { type: "SET-PHOTOS", data };
+function setPhotosAC(photos: Array<Object>) {
+  return { type: "SET-PHOTOS", photos };
 }
 
-export const setPhotosTC = (page) => {
+export const setPhotosTC = (page: number = 1) => {
   return async (dispatch: Function) => {
     try {
       const response = await getFeed(page);

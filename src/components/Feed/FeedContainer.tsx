@@ -14,13 +14,14 @@ type FeedContainerProps = {
 };
 
 function FeedContainer(props: FeedContainerProps) {
+
   useEffect(() => {
-    props.setPhotos(props.feed.page);
+     props.setPhotos(props.feed.page);
   }, []);
 
   const theme = loadTheme(props.theme);
 
-  return <Feed theme={theme} feed={props.feed} setPhotos={props.setPhotos} />;
+  return <Feed theme={theme} photos={props.feed.photos} setPhotos={props.setPhotos} />;
 }
 
 type StateType = {

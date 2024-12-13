@@ -12,7 +12,7 @@ const instanceBase = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0",
 });
 
-function getFeed(page) {
+function getFeed(page: number) {
   return axios.get(`https://api.unsplash.com/photos?page=${page}&client_id=Ni9Jsf3sHn3sxhbQ6aGKF8E21PUtn-oJ5A8ai3SDzrg`);
 }
 

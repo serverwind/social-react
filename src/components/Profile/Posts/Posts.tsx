@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { PostContainer } from "./Post/PostContainer";
 import Input from "./Input/Input";
 
@@ -11,7 +12,7 @@ type PostsProps = {
   }
 };
 
-export default function Posts(props: PostsProps) {
+const Posts = memo(function Posts(props: PostsProps) {
   return (
     <div className="p-4">
       <h2 className={ `text-xl mb-4 ${props.theme.text}` }>My posts</h2>
@@ -23,4 +24,6 @@ export default function Posts(props: PostsProps) {
       </div>
     </div>
   );
-}
+})
+
+export default Posts;
