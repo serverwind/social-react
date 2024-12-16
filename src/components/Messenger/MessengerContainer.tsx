@@ -31,7 +31,7 @@ type StateType = {
   };
 };
 
-function MessengerContainerAPI(props: any) {
+function MessengerContainer(props: any) {
   const theme = loadTheme(props.theme);
 
   return <Messenger {...props} theme={theme} />;
@@ -50,4 +50,4 @@ const actionCreators = {
   setUsers: setUsersAC,
 };
 
-export const MessengerContainer = compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MessengerContainerAPI);
+export default compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MessengerContainer);

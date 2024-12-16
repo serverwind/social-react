@@ -8,7 +8,7 @@ type SettingsContainerProps = {
   theme: string;
 };
 
-function SettingsContainerAPI(props: SettingsContainerProps) {
+function SettingsContainer(props: SettingsContainerProps) {
   const theme = loadTheme(props.theme);
 
   return <Settings theme={theme} />;
@@ -26,4 +26,4 @@ const mapStateToProps = (state: StateType) => {
   };
 };
 
-export const SettingsContainer = compose(connect(mapStateToProps, null), withAuthRedirect)(SettingsContainerAPI);
+export default compose(connect(mapStateToProps, null), withAuthRedirect)(SettingsContainer);

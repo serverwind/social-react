@@ -43,7 +43,7 @@ type StateType = {
   };
 };
 
-function ProfileContainerAPI(props: ProfileContainerPropsType) {
+function ProfileContainer(props: ProfileContainerPropsType) {
   const userIdPara = useParams();
   let userId = userIdPara.userId || props.userId;
 
@@ -64,4 +64,4 @@ let mapStateToProps = (state: StateType) => {
   };
 };
 
-export const ProfileContainer = compose(connect(mapStateToProps, { showProfile: showProfileTC }), withAuthRedirect)(ProfileContainerAPI);
+export default compose(connect(mapStateToProps, { showProfile: showProfileTC }), withAuthRedirect)(ProfileContainer);

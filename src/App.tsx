@@ -1,19 +1,21 @@
+import { lazy, useEffect } from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { initApp } from "./data/appReducer";
+import withSuspence from "./hoc/withSuspence";
+
 import Header from "./components/Header/Header";
 import { NavigationContainer } from "./components/Navigation/NavigationContainer";
 import Footer from "./components/Footer/Footer";
-import { ProfileContainer } from "./components/Profile/ProfileContainer";
-import { MessengerContainer } from "./components/Messenger/MessengerContainer";
-import FriendsContainer from "./components/Friends/FriendsContainer";
-import FeedContainer from "./components/Feed/FeedContainer";
-import { MusicContainer } from "./components/Music/MusicContainer";
-import { SettingsContainer } from "./components/Settings/SettingsContainer";
-import Login from "./components/Login/Login";
 import Loader from "./components/Loader/Loader";
 
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { initApp } from "./data/appReducer";
+const ProfileContainer = lazy(() => import("./components/Profile/ProfileContainer"));
+const MessengerContainer = lazy(() => import("./components/Messenger/MessengerContainer"));
+const FriendsContainer = lazy(() => import("./components/Friends/FriendsContainer"));
+const Login = lazy(() => import("./components/Login/Login"));
+const FeedContainer = lazy(() => import("./components/Feed/FeedContainer"));
+const MusicContainer = lazy(() => import("./components/Music/MusicContainer"));
+const SettingsContainer = lazy(() => import("./components/Settings/SettingsContainer"));
 
 function App(props) {
   useEffect(() => {
@@ -32,15 +34,15 @@ function App(props) {
           <NavigationContainer />
 
           <Routes>
-            <Route path="/" element={<ProfileContainer />} />
-            <Route path="/profile/:userId" element={<ProfileContainer />} />
-            <Route path="/profile/*" element={<ProfileContainer />} />
-            <Route path="/messenger/*" element={<MessengerContainer />} />
-            <Route path="/friends" element={<FriendsContainer />} />
-            <Route path="/feed" element={<FeedContainer />} />
-            <Route path="/music" element={<MusicContainer />} />
-            <Route path="/settings" element={<SettingsContainer />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={withSuspence(ProfileContainer)} />
+            <Route path="/profile/:userId" element={withSuspence(ProfileContainer)} />
+            <Route path="/profile/*" element={withSuspence(ProfileContainer)} />
+            <Route path="/messenger/*" element={withSuspence(MessengerContainer)} />
+            <Route path="/friends" element={withSuspence(FriendsContainer)} />
+            <Route path="/feed" element={withSuspence(FeedContainer)} />
+            <Route path="/music" element={withSuspence(MusicContainer)} />
+            <Route path="/settings" element={withSuspence(SettingsContainer)} />
+            <Route path="/login" element={withSuspence(Login)} />
           </Routes>
         </div>
         <Footer />

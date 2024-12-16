@@ -16,9 +16,9 @@ const actionCreators = {
   setTrack: setTrackAC,
 };
 
-function MusicContainerAPI(props) {
+function MusicContainer(props) {
   const theme = loadTheme(props.theme);
   return <Music {...props} theme={theme} />;
 }
 
-export const MusicContainer = compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MusicContainerAPI);
+export default compose(connect(mapStateToProps, actionCreators), withAuthRedirect)(MusicContainer);
